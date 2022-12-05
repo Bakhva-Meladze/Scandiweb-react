@@ -1,0 +1,265 @@
+
+/*.value {
+    margin-bottom: 14px;
+    margin-top: 13px;
+}*/
+
+.cart {
+    display: flex;
+    margin: 0 100px;
+    text-align: left;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: relative;
+
+    &.popup {
+        background-color: red;
+        display: flex;
+        margin-left: calc(100% - 95%);
+        text-align: left;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .title {
+        font-family: $font-family-raleway;
+        font-size: $font-size-xxl;
+        font-weight: 700;
+        color: $black;
+        border-bottom: solid 1px #E5E5E5;
+        padding-bottom: 55px;
+        line-height: 40px;
+        margin-left: 16px;
+
+    }
+
+    .container-item {
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+        margin-bottom: 4px;
+        color: #1D1F22;
+        border-bottom: solid 1px #E5E5E5;
+
+        .content {
+            width: 300px;
+            justify-content: space-around;
+            display: flex;
+            text-align: left;
+            flex-direction: column;
+            flex-wrap: nowrap;
+
+
+            .brand {
+                font-family: $font-family-raleway;
+                font-weight: 600;
+                width: 400px;
+                Line-height: 27px;
+                font-size: $font-size-xl;
+                margin-bottom: 16px;
+
+            }
+
+            .name {
+                font-family: $font-family-raleway;
+                font-weight: 400;
+                width: 400px;
+                Line-height: 27px;
+                font-size: $font-size-xl;
+                margin-bottom: 20px;
+            }
+
+            .currency {
+                font-family: $font-family-raleway;
+                font-weight: 600;
+                font-size: $font-size-large;
+                line-height: 27px;
+                margin-bottom: 20px;
+            }
+
+            .attribute {
+                width: 276px;
+                gap: 7px;
+                color: #1D1F22;
+                padding-bottom: 30px;
+
+                .size {
+                    size: 10px;
+                    font-weight: 700;
+                }
+
+                .items {
+                    display: flex;
+                    gap: 8px;
+                    width: 276px;
+                    height: 45px;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content: flex-start;
+
+                    .item {
+                        border: 1px solid #1D1F22;
+                        text-align: center;
+                        width: 63px;
+                        padding-top: 12px;
+                    }
+                }
+            }
+
+        }
+
+        .content-right {
+            display: flex;
+
+            .quantity-switcher {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                margin-right: 25px;
+
+                .sum {
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
+                    justify-content: space-between;
+                    margin-bottom: 24px;
+                    left: 1071px
+                }
+
+                .sum-button {
+                    text-align: center;
+                    width: 15px;
+                    border: 1px solid black;
+                    padding: 7.5px 7.5px 7.5px 7.5px;
+                    margin-bottom: 10px;
+                    margin-top: 10px
+                }
+            }
+
+            .imgs {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+
+                .img {
+                    width: 200px;
+                    height: 288px;
+
+                }
+
+                .container-of-arrow {
+                    width: 56px;
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 250px;
+                    /* margin-bottom: -2px; */
+                    margin-left: 120px;
+                    position: absolute;
+
+                    .show-arrow {
+                        background-color: black;
+                        text-align: center;
+                        font-size: 15px;
+                        /* margin-bottom: -36px; */
+                        color: white;
+                    }
+
+                    .show-arrow:hover {
+                        cursor: pointer;
+                    }
+
+
+                }
+            }
+
+
+        }
+
+    }
+    .foot {
+        display: flex;
+        flex-direction: column;
+        width: 279px;
+        margin-bottom: 276px;
+        margin-top: 30px;
+        gap: 8px;
+
+        .tax {
+            display: flex;
+            font-family: $font-family-raleway;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 28px;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            padding-right: 95px;
+
+            .currency {
+                font-family: $font-family-raleway;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 27px;
+            }
+        }
+        .quantity {
+            display: flex;
+            font-family: $font-family-raleway;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 28px;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            padding-right: 161px;
+
+            .currency {
+                font-family: $font-family-roboto;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 24px;
+            }
+
+        }
+        .total {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            padding-right: 110px;
+
+            .currency {
+                font-family: $font-family-roboto;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 27px;
+            }
+        }
+
+        .button {
+            width: auto;
+            background-color: $green;
+            height: 43px;
+            border: none;
+            color: $white;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 16px;
+            font-family: $font-family-raleway;
+
+
+        }
+
+    }
+}
+
+.arrows-div {
+    background-color: black;
+    color: white;
+    width: 18px;
+    height: 10px;
+
+
+
+}
+

@@ -1,0 +1,333 @@
+.header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 100px;
+
+    .navigation {
+        flex-direction: row;
+        align-items: flex-start;
+        display: flex;
+
+        .btn {
+            width: 65px;
+            height: 20px;
+            padding-left: 30px;
+            padding-right:30px;
+            text-transform: uppercase;
+            color: #1D1F22;
+        }
+
+        label:hover {
+            border-bottom: 2px solid green;
+            height: 70px;
+        }
+    }
+
+    .logo {
+        position: absolute;
+        margin-top: 20px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    .right {
+        display: flex;
+
+        .currency {
+            position: relative;
+
+            .dollar {
+                margin-bottom: 5.5px;
+                margin-top: 5.5px;
+                width: auto;
+                height: 42px;
+                font-weight: 500;
+            }
+            .container {
+                display: none;
+                position: absolute;
+                filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
+
+            }
+
+        }
+        .arrow{
+            width: 6px;
+            height: 3px;
+            margin-left:10px;
+            margin-top: 21.5px;
+            margin-bottom: 15.5px;
+        }
+        .basket{
+            width: 20px;
+            height: 20px;
+            margin-left: 22px;
+            margin-top: 11.17px;
+            margin-bottom: 15.8px;
+
+        }
+        .overlay {
+            top: 80px;
+            left: 0;
+            position: absolute;
+            z-index: 1;
+            background: $white;
+            height: 100%;
+            width: 100%;
+            background: rgba(57, 55, 72, 0.2);
+
+            .cart-overlay {
+                width: 325px;
+                display: flex;
+                text-align: left;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                position: absolute;
+                right: 70px;
+                background: $white;
+
+                .title {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    justify-content: flex-start;
+                    margin-left: 16px;
+                }
+                .container-overflow-item {
+                    margin-right: 16px;
+                    padding-left: 16px;
+                    /* width: 136px; */
+                    margin-top: 32px;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    justify-content: flex-end;
+                    flex-direction: row;
+
+                    .content-overlay {
+                        width: 136px;
+
+                        .brand-overlay {
+                            font-family: $font-family-raleway;
+                            font-weight: 300;
+                            Line-height: 25px;
+                            font-size: 16px;
+                            color: #1D1F22;
+
+                        }
+
+                        .name-overlay {
+                            font-family: $font-family-raleway;
+                            font-weight: 300;
+                            font-size: 16px;
+                            line-height: 25px;
+                            color: #1D1F22;
+                        }
+                        .currency-overlay {
+                            font-family: $font-family-raleway;
+                            width: 52px;
+                            font-size: 16px;
+                            line-height: 25px;
+                            font-weight: 500;
+                        }
+                        .attribute-overlay {
+
+                            .size-overlay {
+                                display: flex;
+                                margin-bottom: 8px;
+
+                            }
+                            .items-overlay {
+                                font-family: $font-family-raleway;
+                                font-weight: 300;
+                                font-size: 16px;
+                                line-height: 25px;
+                                color: #1D1F22;
+                                display: flex;
+                                justify-content: flex-start;
+                                flex-wrap: nowrap;
+
+                                .item-overlay {
+                                    font-family: serif;
+                                    width: 24px;
+                                    height: 24px;
+                                    font-weight: 25;
+                                    border: 1px solid #1D1F22;
+                                    text-align: center;
+                                    margin-right: 8px;
+                                }
+
+                            }
+
+                        }
+
+                    }
+                    .content-right-overflow {
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+                        justify-content: flex-start;
+
+                        .quantity-switcher-overflow {
+
+                            .sum-overflow {
+                                display: flex;
+                                flex-direction: column;
+                                flex-wrap: wrap;
+                                margin-right: 8px;
+                                margin-left: 10px;
+                                height: 190px;
+                                justify-content: space-between;
+
+                                .sum-button {
+                                    border: 1px solid black;
+                                    width: 24px;
+                                    text-align: center;
+                                    padding-top: 4px;
+                                    padding-bottom: 4px;
+                                }
+
+                            }
+                        }
+                        .imgs-overflow {
+
+                            .img-overflow {
+                                height: 190px;
+                                width: 121px;
+
+                            }
+                            .container-of-arrow-img-overflow {
+                                display: none;
+
+                            }
+
+                        }
+                    }
+
+                }
+                .foot{
+
+                    .tax {
+                        display:none;
+
+                    }
+                    .quantity {
+                        display: none;
+                    }
+                    .button {
+                        display: none;
+                    }
+                    .overflow-tax {
+                        display: flex;
+                        flex-wrap: nowrap;
+                        justify-content: space-between;
+                        margin-bottom: 45px;
+
+                        .overflow-total {
+                            font-family: $font-family-roboto;
+                            font-weight: 500;
+                            font-size: 16px;
+                            line-height: 18px;
+                            margin-top: 30px;
+                            margin-left: 16px;
+                            width: 55px;
+                            color: #1D1F22;
+                            height: 19px;
+
+                        }
+
+                        .currency {
+                            font-family: $font-family-raleway;
+                            font-weight: 700;
+                            font-size: 16px;
+                            margin-right: 20px;
+                            height: 26px;
+                            line-height: 25px;
+                            margin-top:30px;
+                            color: #1D1F22;
+                        }
+
+                    }
+
+
+                }
+                .overflow-button-wiev {
+                    font-family: $font-family-raleway;
+                    width: 140px;
+                    height: 43px;
+                    font-weight: 600;
+                    border: 1px solid #1D1F22;
+                    background: $white;
+                    margin-left: 16px;
+                    margin-bottom: 32px;
+
+
+                    .overflow-value {
+                        font-family: $font-family-raleway;
+                        text-align: center;
+
+                    }
+                }
+                .overflow-button-checkout {
+                    background-color: $green;
+                    margin-left: 12px;
+                    width: 140px;
+                    padding-top: 13px;
+                    padding-bottom: 13px;
+                    border: none;
+                    height: 43px;
+
+
+                    .overflow-value-checkout {
+                        font-family: $font-family-raleway;
+                        text-align: center;
+                        color: white;
+                        font-weight: 600;
+                        font-size: 14px;
+
+                    }
+
+                }
+
+            }
+
+
+        }
+
+    }
+    .circle {
+        background: #1D1F22;
+        border-radius: 60px;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        margin-left: 58px;
+        margin-top: 2px;
+        color:white;
+        font-family: $font-family-roboto;
+        font-weight: 700;
+        text-align: center;
+
+        .circle-value {
+            margin-top: 3px;
+        }
+
+    }
+
+}
+
+.sectionCurrency{
+    width: 114px;
+    height: 42px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top:0px;
+    padding-top: 13px;
+
+ }
+.sectionCurrency:hover {
+    background-color: #EEEEEE;
+    width: 114px;
+    height: 42px;
+    font-weight: 500;
+}
+
