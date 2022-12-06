@@ -11,7 +11,6 @@ class CategoryPage extends React.Component {
             test: [1,2,3],
             currencySymbols: ''
         }
-        this.test = this.test.bind(this);
     }
     async componentDidMount() {
         let category =  await new ProductQueryClass()
