@@ -37,7 +37,6 @@ class ProductPage extends React.Component {
         }
 
         fetch(url, responseOptions).then(response => response.json()).then(responseData => {
-            console.log(responseData)
             this.setState({
                 products: responseData.data.product,
                 img: responseData.data.product.gallery,
