@@ -1,35 +1,42 @@
 import CategoryPage from "./Components/CategoryPage/CategoryPage";
 import Header from "./Components/Header/Header";
-import React from 'react';
-import { BrowserRouter, Route } from "react-router-dom";
-import ProductPage from './Components/ProductPage/ProductPage'
+import React from "react";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import ProductPage from "./Components/ProductPage/ProductPage";
 import Cart from "./Components/cart/Cart";
-import "./style.css"
+import "./Style/Style.css";
+import ProductCard from "./Components/CategoryPage/ProductCard";
+import Overlay from "./Components/Header/Overlay";
+import CartProvider from "./Components/cart/CartProvider";
 
-export default class App extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
-    }
+export default class App extends React.Component {
     render() {
         return (
             <div className="App">
-                    <Header />
-                <BrowserRouter>
-                    <Route path="/category/:items">
-                        <CategoryPage />
-                    </Route>
-                    <Route path="/Product/:id">
-                    <ProductPage />
-                    </Route>
-                    <Route path="/Cart">
-                        <Cart />
-                    </Route>
-                </BrowserRouter>
+                <CartProvider>
+                    <Header>
+                        <Overlay>
+                            <Cart/>
+                        </Overlay>
+                    </Header>
+                    <BrowserRouter>
+                        <Route exact path="/">
+                            <Redirect to="category/all"/>
+                        </Route>
+                        <Route path="/category/:items">
+                            <CategoryPage>
+                                <ProductCard/>
+                            </CategoryPage>
+                        </Route>
+                        <Route path="/Product/:id">
+                            <ProductPage/>
+                        </Route>
+                        <Route path="/Cart">
+                            <Cart/>
+                        </Route>
+                    </BrowserRouter>
+                </CartProvider>
             </div>
         )
     }
-
-
 }

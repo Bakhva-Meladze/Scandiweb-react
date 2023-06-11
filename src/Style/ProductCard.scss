@@ -1,102 +1,88 @@
-
 .category-page {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 
+    .product-card {
+        background-color: $white;
+        padding: 16px;
+        text-align: left;
+        margin: 100px 20px 20px;
 
+        .out-stock {
+            opacity: 0.5;
+            min-width: 356px;
+            max-height: 338px;
+            background: $white;
+            text-align: left;
+        }
 
-  .product-card {
-    background-color: white;
-    padding: 16px 16px 16px 16px;
-    text-align: left;
-    margin: 100px 20px 20px;
+        .value-stock {
+            font-family: $font-family-raleway;
+            font-weight: 400;
+            font-size: $font-size-large;
+            line-height: 38px;
+            text-align: right;
+            color: $grey-3;
+            margin-top: 127px;
+            position: absolute;
+            margin-left: 70px;
+        }
 
-    .out-stock {
-      opacity: 0.5;
-      min-width: 356px;
-      max-height: 338px;
-      background: $white;
-      text-align: left;
+        &.product-card:hover {
+            box-shadow: 0 4px 35px $shadow;
 
-    }
-    .value-stock {
-      font-family: $font-family-raleway;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 38px;
-      text-align: right;
-      color: #8D8F9A;
-      margin-top: 127px;
-      position: absolute;
-      margin-left: 70px;
+            .basket-img {
+                color: white;
+                width: 52px;
+                height: 52px;
+                background: $green;
+                border-radius: 50px;
+                margin-left: 274px;
+                margin-right: 30px;
+                position: absolute;
 
+                .img-value {
+                    width: 24px;
+                    text-align: center;
+                    padding: 14px;
+                }
+            }
+        }
 
+        .pictures {
+            min-width: 356px;
+            max-height: 338px;
+            background: $white;
+            text-align: left;
+        }
 
-    }
+        .name {
+            margin-top: 21px;
+            font-family: $font-family-raleway;
+            font-weight: 300;
+            Width: 354px;
+            line-height: 28px;
+            font-size: $font-size-medium;
+            color: $grey-3;
+        }
 
+        .currency {
+            font-family: $font-family-raleway;
+            font-size: $font-size-medium;
+            font-weight: 500;
+            line-height: 28px;
+            margin-bottom: 16px;
+            text-align: left;
+        }
 
-
-    &.product-card:hover {
-      box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
-
-      .basket-img {
-        color: white;
-        width:52px;
-        height: 52px;
-        background: $green;
-        border-radius: 50px;
-        margin-left: 274px;
-        margin-right: 30px;
-        position: absolute;
-
-        .img-value {
-          width: 24px;
-          text-align: center;
-          padding: 14px 14px 14px 14px;
-
+        .brand {
+            font-weight: 500;
+            width: 400px;
+            Line-height: 30.8px;
+            font-size: $font-size-xl;
         }
       }
-
-    }
-
-    .pictures {
-      min-width: 356px;
-      max-height: 338px;
-      background: $white;
-      text-align: left;
-    }
-
-    .name {
-      margin-top: 21px;
-      font-family: $font-family-raleway;
-      font-weight: 300;
-      Width: 354px;
-      line-height: 28px;
-      font-size: 18px;
-      color: #8D8F9A;
-
-    }
-
-    .currency {
-      font-family: $font-family-raleway;
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 28px;
-      margin-bottom: 16px;
-      text-align: left;
-
-    }
-
-    .brand {
-      font-weight: 500;
-      width: 400px;
-      Line-height: 30.8px;
-      font-size: 30px;
-
-    }
-  }
-
 }
 
 

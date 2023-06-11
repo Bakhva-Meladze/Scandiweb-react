@@ -1,90 +1,47 @@
-import React from 'react';
-import ProductQueryClass from "../../querys/ProductQueryClass";
-import ProductPage from "../ProductPage/ProductPage";
-import icon from '../../images/whiteCart.svg';
+import React from "react";
+import cartIcon from "../../images/whiteCart.svg";
 
 class ProductCard extends React.Component {
-
     constructor(props) {
         super(props);
-         this.state ={
-             id: this.props.product.id,
-             stock: this.props.product.inStock,
 
-        }
-        this.show();
-        this.addToCart = this.addToCart.bind(this);
-
+        this.ProductPage = this.ProductPage.bind(this);
     }
-    show() {
-        let data = localStorage.getItem("currencyKey");
-        data = JSON.parse(data);
-        return data
+
+    ProductPage() {
+        window.location.pathname = "/Product/" + this.props.productCategory.id;
     }
-    addToCart (){
-        if (this.props.product.attributes.length ===0){
-            const Object = {
-                id: this.state.id,
-                length:localStorage.getItem('id') ?
-                    JSON.parse(localStorage.getItem("id")[localStorage.getItem("id").length-1].length):1
-            }
-            if(localStorage.getItem("id")){
-                let filter = 0;
-                let add = JSON.parse(localStorage.getItem("id"));
-                add.map((value,key)=> {
-                    if(this.props.product.id === add[key].id){
-                        localStorage.setItem("id", JSON.stringify(add[key].length++));
-                        filter++
-                    }
-                    if( filter === 0 &&  add.length === key+1) {
-                        if(this.props.product.id !== add[key].id){
-                            alert("hi")
-                            add.push(Object);
 
-                        }
-                    }
-                    if(filter > key && this.props.product.id !== add[key].id){
-                        add.push(Object);
-
-                    }
-
-                })
-                localStorage.setItem("id", JSON.stringify(add));
-            }
-            else {
-                localStorage.setItem("id", JSON.stringify([Object]));
-
-            }
-
-
-
-        }else{
-            window.location.pathname = "/Product/"+this.state.id;
-
-        }
-
-    }
     render() {
         return (
             <div className="product-card">
-                <span style={{ display: this.state.stock === true ? "none":"block"}}
-                      className={`${this.state.stock ===true? "":"value-stock"}`}>{"OUT OF THE STOCK"}</span>
-                <img className={`${this.state.stock ===true?"pictures":"out-stock"}`}
-                     src={this.props.product.gallery[0]}
+                <span style={{display: this.props.productCategory.inStock === true ? "none" : "block"}}
+                      className={`${this.props.productCategory.inStock === true ? "" : "value-stock"}`}>
+                    {"OUT OF THE STOCK"}
+                </span>
+                <img className={`${this.props.productCategory.inStock === true ? "pictures" : "out-stock"}`}
+                     onClick={() => !this.props.productCategory.inStock ? "" : this.ProductPage()}
+                     src={this.props.productCategory.gallery[0]}
+                     alt="Product"
                 />
                 <div className="basket-img">
-                    <img className="img-value" onClick={()=> this.addToCart()} src={icon} />
+                    <img className="img-value"
+                         onClick={() => !this.props.productCategory.inStock ? ""
+                             : this.props.AddProductInCart(
+                                 this.props.productCategory.id,
+                                 this.props.productCategory.attributes[0]?.items[0]?.id
+                             )}
+                         src={cartIcon} alt="Cart"/>
                 </div>
-                <div className="name">
-                    <span>{this.props.product.name}</span>
+                <div className="name"><span>{this.props.productCategory.name}</span>
                     <div className='currency'>
-                        {this.props.product.prices[this.show()].currency.symbol}
-                        {' '+this.props.product.prices[this.show()].amount}
+                        {this.props.productCategory.prices[this.props.currencyKey]?.currency.symbol}
+                        {this.props.productCategory.prices[this.props.currencyKey]?.amount}
                     </div>
                 </div>
             </div>
         )
     }
-
 }
+
 export default ProductCard

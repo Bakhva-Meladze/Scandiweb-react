@@ -15,7 +15,15 @@
             padding-left: 30px;
             padding-right:30px;
             text-transform: uppercase;
-            color: #1D1F22;
+            color: $black;
+            border: none;
+
+            .btns {
+                padding: 0;
+                border: none;
+                background: none;
+                text-transform: uppercase;
+            }
         }
 
         label:hover {
@@ -36,6 +44,7 @@
 
         .currency {
             position: relative;
+            cursor: pointer;
 
             .dollar {
                 margin-bottom: 5.5px;
@@ -44,29 +53,58 @@
                 height: 42px;
                 font-weight: 500;
             }
-            .container {
-                display: none;
-                position: absolute;
-                filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
 
+            .container {
+                background: white;
+                z-index: 1;
+                position: absolute;
+                filter: drop-shadow(0px 4px 35px $shadow);
+                box-shadow: $shadow 1px 2px;
             }
 
+            .hide {
+                display: none;
+            }
+
+            .show-display {
+                display: block;
+            }
         }
-        .arrow{
+
+        .basket-container {
+            display: flex;
+            padding-top: -4px;
+            padding-bottom: 24px;
+            flex-direction: row-reverse;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: space-around;
+
+            .basket {
+                width: 20px;
+                height: 20px;
+                margin-left: 22px;
+                margin-top: 11.17px;
+                margin-bottom: 15.8px;
+            }
+        }
+
+        .remove {
+            display: none;
+        }
+
+        .arrow {
             width: 6px;
             height: 3px;
             margin-left:10px;
             margin-top: 21.5px;
             margin-bottom: 15.5px;
         }
-        .basket{
-            width: 20px;
-            height: 20px;
-            margin-left: 22px;
-            margin-top: 11.17px;
-            margin-bottom: 15.8px;
 
+        .flip-arrow {
+            transform: scaleY(-1);
         }
+
         .overlay {
             top: 80px;
             left: 0;
@@ -93,10 +131,10 @@
                     justify-content: flex-start;
                     margin-left: 16px;
                 }
+
                 .container-overflow-item {
                     margin-right: 16px;
                     padding-left: 16px;
-                    /* width: 136px; */
                     margin-top: 32px;
                     display: flex;
                     flex-wrap: nowrap;
@@ -110,38 +148,38 @@
                             font-family: $font-family-raleway;
                             font-weight: 300;
                             Line-height: 25px;
-                            font-size: 16px;
-                            color: #1D1F22;
-
+                            font-size: $font-size-small;
+                            color: $black;
                         }
 
                         .name-overlay {
                             font-family: $font-family-raleway;
                             font-weight: 300;
-                            font-size: 16px;
+                            font-size: $font-size-small;
                             line-height: 25px;
-                            color: #1D1F22;
+                            color: $black;
                         }
+
                         .currency-overlay {
                             font-family: $font-family-raleway;
                             width: 52px;
-                            font-size: 16px;
+                            font-size: $font-size-small;
                             line-height: 25px;
                             font-weight: 500;
                         }
-                        .attribute-overlay {
 
+                        .attribute-overlay {
                             .size-overlay {
                                 display: flex;
                                 margin-bottom: 8px;
-
                             }
+
                             .items-overlay {
                                 font-family: $font-family-raleway;
                                 font-weight: 300;
-                                font-size: 16px;
+                                font-size: $font-size-small;
                                 line-height: 25px;
-                                color: #1D1F22;
+                                color: $black;
                                 display: flex;
                                 justify-content: flex-start;
                                 flex-wrap: nowrap;
@@ -151,16 +189,19 @@
                                     width: 24px;
                                     height: 24px;
                                     font-weight: 25;
-                                    border: 1px solid #1D1F22;
+                                    border: 1px solid $black;
                                     text-align: center;
                                     margin-right: 8px;
                                 }
 
+                                .color {
+                                    background-color: black;
+                                    color: white;
+                                }
                             }
-
                         }
-
                     }
+
                     .content-right-overflow {
                         display: flex;
                         flex-direction: row;
@@ -168,7 +209,6 @@
                         justify-content: flex-start;
 
                         .quantity-switcher-overflow {
-
                             .sum-overflow {
                                 display: flex;
                                 flex-direction: column;
@@ -184,89 +224,89 @@
                                     text-align: center;
                                     padding-top: 4px;
                                     padding-bottom: 4px;
+                                    cursor: pointer;
                                 }
-
                             }
                         }
-                        .imgs-overflow {
 
+                        .imgs-overflow {
                             .img-overflow {
                                 height: 190px;
                                 width: 121px;
-
                             }
+
                             .container-of-arrow-img-overflow {
-                                display: none;
+                                display: flex;
+                                justify-content: space-evenly;
+                                flex-direction: row;
+                                margin-left: 57px;
 
+                                .show-arrow {
+                                    background-color: black;
+                                    text-align: center;
+                                    font-size: $font-size-xxs;
+                                    color: white;
+                                }
                             }
-
                         }
                     }
-
                 }
-                .foot{
 
+                .foot {
                     .tax {
                         display:none;
-
                     }
+
                     .quantity {
                         display: none;
                     }
+
                     .button {
                         display: none;
                     }
+
                     .overflow-tax {
-                        display: flex;
                         flex-wrap: nowrap;
                         justify-content: space-between;
                         margin-bottom: 45px;
-
-                        .overflow-total {
-                            font-family: $font-family-roboto;
-                            font-weight: 500;
-                            font-size: 16px;
-                            line-height: 18px;
-                            margin-top: 30px;
-                            margin-left: 16px;
-                            width: 55px;
-                            color: #1D1F22;
-                            height: 19px;
-
-                        }
+                        font-family: $font-family-roboto;
+                        font-weight: 500;
+                        font-size: $font-size-small;
+                        margin-left:10px;
+                        line-height: 18px;
+                        margin-top: 30px;
+                        color: $black;
+                        height: 19px;
 
                         .currency {
-                            font-family: $font-family-raleway;
                             font-weight: 700;
-                            font-size: 16px;
+                            font-size: $font-size-small;
                             margin-right: 20px;
                             height: 26px;
                             line-height: 25px;
                             margin-top:30px;
-                            color: #1D1F22;
+                            color: $black;
+                            margin-left: 200px;
                         }
-
                     }
-
-
                 }
+
                 .overflow-button-wiev {
                     font-family: $font-family-raleway;
                     width: 140px;
                     height: 43px;
                     font-weight: 600;
-                    border: 1px solid #1D1F22;
+                    border: 1px solid $black;
                     background: $white;
                     margin-left: 16px;
                     margin-bottom: 32px;
 
-
                     .overflow-value {
                         font-family: $font-family-raleway;
                         text-align: center;
-
                     }
                 }
+
                 .overflow-button-checkout {
                     background-color: $green;
                     margin-left: 12px;
@@ -276,36 +316,31 @@
                     border: none;
                     height: 43px;
 
-
                     .overflow-value-checkout {
                         font-family: $font-family-raleway;
                         text-align: center;
                         color: white;
                         font-weight: 600;
-                        font-size: 14px;
-
+                        font-size: $font-size-xs;
                     }
-
                 }
-
             }
-
-
         }
-
     }
+
     .circle {
-        background: #1D1F22;
+        background: $black;
         border-radius: 60px;
         width: 20px;
         height: 20px;
         position: absolute;
-        margin-left: 58px;
+        margin-left: 38px;
         margin-top: 2px;
         color:white;
         font-family: $font-family-roboto;
         font-weight: 700;
         text-align: center;
+        top: 33px;
 
         .circle-value {
             margin-top: 3px;
@@ -315,17 +350,17 @@
 
 }
 
-.sectionCurrency{
+.sectionCurrency {
     width: 114px;
     height: 42px;
     font-weight: 500;
-    margin-bottom: 0px;
-    margin-top:0px;
-    padding-top: 13px;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+}
 
- }
 .sectionCurrency:hover {
-    background-color: #EEEEEE;
+    background-color: $grey;
     width: 114px;
     height: 42px;
     font-weight: 500;
