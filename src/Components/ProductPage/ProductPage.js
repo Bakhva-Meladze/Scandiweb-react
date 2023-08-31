@@ -27,12 +27,12 @@ class ProductPage extends React.Component {
     }
 
     async componentDidMount() {
-        const classProduct = await new ProductQueryClass();
+        /*const classProduct = await new ProductQueryClass();*/
         const responseOptions = {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                query: classProduct.queryOfProduct(this.state.id)
+                query: ""
             })
         }
 

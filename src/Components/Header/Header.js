@@ -52,9 +52,9 @@ class Header extends React.Component {
 
         return (
             <CartContext.Consumer>
-                {({SelectCurrency, QuantityOfProducts, currencyKey}) => (
+                {({SelectCurrency, QuantityOfProducts, currencyKey,testType}) => (
                     <div className="header">
-                        <Category categories={this.state.categories}/>
+                        <Category  categories={this.state.categories} testType ={testType}/>
                         <div className="logo"><img src={iconBox} alt="logo"/></div>
                         <div className="right">
                             <Currency SelectCurrency={SelectCurrency}

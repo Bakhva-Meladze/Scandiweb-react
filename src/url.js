@@ -1,3 +1,3 @@
 
-const url = 'http://localhost:4000';
+const url = 'http://graphql.bakhva.online/';
 export default url;

@@ -52,8 +52,8 @@ export default class ProductQueryClass extends Component {
                }`;
     }
 
-    queryOfCategory(data = '') {
-        return `{ category(input:{ title: "${window.location.pathname.slice(10, window.location.href.length)}"}) {
+    queryOfCategory(data ) {
+        return `{ category(input:{ title: "${data}"}) {
     name
     products{
     id

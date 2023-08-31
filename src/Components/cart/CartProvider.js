@@ -14,6 +14,7 @@ class CartProvider extends Component {
             productsPrices: [],
             pricesAttributes: [],
             currencyKey: localStorage.getItem("currencyKey") ? localStorage.getItem("currencyKey") : 0,
+            addCategory: ""
         };
     }
 
@@ -65,7 +66,6 @@ class CartProvider extends Component {
 
     componentDidMount() {
         let arr = [];
-
         this.state.cachedData?.forEach((value, key) => {
             const classProduct = new ProductQueryClass();
             const responseOption = {
@@ -92,9 +92,7 @@ class CartProvider extends Component {
                         pricesAttributes: [...productState.pricesAttributes, ...responseData.data.product.prices],
                     }));
                 }
-            })
-
-
+            });
         });
     }
 
@@ -171,15 +169,22 @@ class CartProvider extends Component {
             listOfCartProducts: listOfCartProducts
         });
     }
+    testType =(data) =>{
+        this.setState({
+            addCategory:data})
+
+
+
+    }
 
     render() {
-        const {cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey} = this.state;
-        const {SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart} = this;
+        const {cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,addCategory} = this.state;
+        const {SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart, testType} = this;
 
         return (
             <CartContext.Provider value={{
-                cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,
-                SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart,
+                cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,addCategory,
+                SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart,testType
             }}>
                 {this.props.children}
             </CartContext.Provider>
