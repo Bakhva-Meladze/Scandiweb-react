@@ -1,8 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import ProductQueryClass from "../../querys/ProductQueryClass";
-/*import { Query } from "@apollo/client/react/components";*/
 
 class Category extends React.Component {
     constructor(props) {

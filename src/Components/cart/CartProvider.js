@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import CartContext from "./CartContext";
-import ProductQueryClass from "../../querys/ProductQueryClass";
 import url from "../../url";
+import Header from "../Header/Header";
 
 class CartProvider extends Component {
     constructor(props) {
@@ -72,7 +72,7 @@ class CartProvider extends Component {
                 method: 'POST',
                 headers: {'Content-type': 'application/json'},
                 body: JSON.stringify({
-                    query: this.queryOfProduct(this.state.cachedData[key].id)
+                    query: this.context.queryOfProduct(this.state.cachedData[key].id)
                 })
             };
 
@@ -179,18 +179,22 @@ class CartProvider extends Component {
     }
 
     render() {
+        const {queryOfProduct,queryOfCategory,currencyPriceQuery} = this.context;
         const {cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,addCategory} = this.state;
-        const {SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart, testType,secondTest} = this;
+        const {SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart, testType,secondTest,
+            } = this;
 
         return (
             <CartContext.Provider value={{
                 cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,addCategory,
-                SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart,testType,secondTest
+                SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart,testType,secondTest,
+                queryOfCategory,currencyPriceQuery
             }}>
                 {this.props.children}
             </CartContext.Provider>
         );
     }
 }
+CartProvider.contextType = CartContext;
 
 export default CartProvider;

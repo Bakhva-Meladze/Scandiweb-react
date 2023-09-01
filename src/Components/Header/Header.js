@@ -1,7 +1,6 @@
 import React from "react";
 import iconBox from "../../images/logo.svg";
 import url from "../../url";
-import ProductQueryClass from "../../querys/ProductQueryClass";
 import Error from "../../Error";
 import Category from "./Category";
 import Currency from "./Currency";
@@ -18,12 +17,11 @@ class Header extends React.Component {
     }
 
     async componentDidMount() {
-        const classProduct = await new ProductQueryClass();
         const responseOption = {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                query: classProduct.currencyPriceQuery()
+                query: this.context.currencyPriceQuery()
             })
         }
         try {
@@ -39,7 +37,6 @@ class Header extends React.Component {
             })
         }
     }
-
     render() {
 
         if (this.state.error) {
@@ -49,7 +46,6 @@ class Header extends React.Component {
                 </div>
             )
         }
-
         return (
             <CartContext.Consumer>
                 {({SelectCurrency, QuantityOfProducts, currencyKey,testType}) => (
@@ -72,5 +68,7 @@ class Header extends React.Component {
         )
     }
 }
+Header.contextType = CartContext;
+
 
 export default Header

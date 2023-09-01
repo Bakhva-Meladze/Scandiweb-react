@@ -1,6 +1,5 @@
 import React from "react";
 import url from "../../url";
-import ProductQueryClass from "../../querys/ProductQueryClass";
 import parse from "html-react-parser";
 import Slider from "./Slider";
 import Items from "./Items";

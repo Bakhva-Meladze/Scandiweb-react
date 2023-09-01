@@ -8,15 +8,14 @@ import "./Style/Style.css";
 import ProductCard from "./Components/CategoryPage/ProductCard";
 import Overlay from "./Components/Header/Overlay";
 import CartProvider from "./Components/cart/CartProvider";
-import ProductQueryClass from "./querys/ProductQueryClass";
-import Main from "./Main";
+import Queres from "./querys/Queres";
 
-export default class App extends React.Component {
+class App extends React.Component {
     render() {
         return (
             <div className="App">
+                <Queres>
                     <CartProvider>
-                        <Main />
                         <Header>
                             <Overlay>
                                 <Cart/>
@@ -39,7 +38,11 @@ export default class App extends React.Component {
                             </Route>
                         </BrowserRouter>
                     </CartProvider>
+                </Queres>
+
+
             </div>
         )
     }
 }
+export default App

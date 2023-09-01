@@ -30,7 +30,7 @@ class Cart extends React.Component {
                                     <div
                                         className={`${this.props.dataFromHeader ? "container-overflow-item" : "container-item"}`}
                                         key={index}>
-                                        <Items
+                                        {/*<Items
                                             dataFromHeader={this.props.dataFromHeader}
                                             chooseItemID={product.chooseItemID}
                                             brand={product.brand}
@@ -38,7 +38,7 @@ class Cart extends React.Component {
                                             currency={product.prices}
                                             productAttributes={product.attributes}
                                             currencyKey={currencyKey}
-                                        />
+                                        />*/}
                                         <div
                                             className={`${this.props.dataFromHeader ? "content-right-overflow" : "content-right"}`}>
                                             <ChangeQuantity
