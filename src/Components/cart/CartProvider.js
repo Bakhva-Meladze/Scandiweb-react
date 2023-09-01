@@ -15,7 +15,8 @@ class CartProvider extends Component {
             pricesAttributes: [],
             currencyKey: localStorage.getItem("currencyKey") ? localStorage.getItem("currencyKey") : 0,
             addCategory: ""
-        };
+        }
+
     }
 
     AddProductInCart = (id, choseItemID, length = 1) => {
@@ -67,12 +68,11 @@ class CartProvider extends Component {
     componentDidMount() {
         let arr = [];
         this.state.cachedData?.forEach((value, key) => {
-            const classProduct = new ProductQueryClass();
             const responseOption = {
                 method: 'POST',
                 headers: {'Content-type': 'application/json'},
                 body: JSON.stringify({
-                    query: classProduct.queryOfProduct(this.state.cachedData[key].id)
+                    query: this.queryOfProduct(this.state.cachedData[key].id)
                 })
             };
 
@@ -172,19 +172,20 @@ class CartProvider extends Component {
     testType =(data) =>{
         this.setState({
             addCategory:data})
-
-
+    }
+    secondTest =(data) =>{
+        console.log(data);
 
     }
 
     render() {
         const {cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,addCategory} = this.state;
-        const {SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart, testType} = this;
+        const {SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart, testType,secondTest} = this;
 
         return (
             <CartContext.Provider value={{
                 cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,addCategory,
-                SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart,testType
+                SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart,testType,secondTest
             }}>
                 {this.props.children}
             </CartContext.Provider>

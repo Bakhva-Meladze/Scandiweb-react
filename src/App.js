@@ -9,12 +9,14 @@ import ProductCard from "./Components/CategoryPage/ProductCard";
 import Overlay from "./Components/Header/Overlay";
 import CartProvider from "./Components/cart/CartProvider";
 import ProductQueryClass from "./querys/ProductQueryClass";
+import Main from "./Main";
 
 export default class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <CartProvider>
+                    <CartProvider>
+                        <Main />
                         <Header>
                             <Overlay>
                                 <Cart/>
@@ -36,7 +38,7 @@ export default class App extends React.Component {
                                 <Cart/>
                             </Route>
                         </BrowserRouter>
-                </CartProvider>
+                    </CartProvider>
             </div>
         )
     }
