@@ -40,8 +40,6 @@ class CategoryPage extends React.Component {
             this.componentDidMount();
         }
     }
-
-
     render() {
         return (
             <CartContext.Consumer>

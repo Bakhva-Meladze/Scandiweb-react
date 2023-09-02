@@ -31,7 +31,7 @@ class ProductPage extends React.Component {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                query: ""
+                query: this.context.queryOfProduct(this.state.id)
             })
         }
 

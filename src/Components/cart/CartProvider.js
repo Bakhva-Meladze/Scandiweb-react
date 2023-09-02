@@ -188,7 +188,7 @@ class CartProvider extends Component {
             <CartContext.Provider value={{
                 cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,addCategory,
                 SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart,testType,secondTest,
-                queryOfCategory,currencyPriceQuery
+                queryOfProduct,queryOfCategory,currencyPriceQuery
             }}>
                 {this.props.children}
             </CartContext.Provider>
