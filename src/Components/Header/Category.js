@@ -9,10 +9,6 @@ class Category extends React.Component {
     }
 
     addressRouter(category) {
-
-        /*
-                window.location.pathname = "category/" + category;
-        */
         this.props.testType(category);
 
     }
