@@ -18,9 +18,6 @@ class Category extends React.Component {
             <div className="navigation">
                 {this.props.categories.map((value, key) => (
                     <label key={key} className="btn">
-                        {/*<button className="btns" onClick={() => this.props.testType(this.props.categories[key].name)}>
-                            {this.props.categories[key].name}
-                        </button>*/}
                         <NavLink className="btns" onClick={() => this.props.testType(this.props.categories[key].name)}
                                  key={this.props.categories[key].name} to={"/category/" + this.props.categories[key].name}>
                             {this.props.categories[key].name}
