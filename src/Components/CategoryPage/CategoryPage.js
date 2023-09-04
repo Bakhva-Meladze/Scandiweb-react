@@ -16,7 +16,7 @@ class CategoryPage extends React.Component {
         }
 
     }
-    async componentDidMount() {
+     componentDidMount() {
 
         const responseOption = {
             method: 'POST',
@@ -26,11 +26,13 @@ class CategoryPage extends React.Component {
 
             })
         }
-        const response = await fetch(url, responseOption);
-        const responseData = await response.json();
-        this.setState({
-            productsCategory: responseData.data.category.products,
+        fetch(url, responseOption).then(response => response.json()).then(responseData => {
+            this.setState({
+                productsCategory: responseData.data.category.products,
+            })
+
         })
+
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevState.add !== window.location.pathname.slice(10, window.location.href.length)){
