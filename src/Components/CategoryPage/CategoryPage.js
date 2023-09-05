@@ -3,6 +3,8 @@ import url from "../../url.js";
 import CartContext from "../cart/CartContext";
 import ProductCard from "./ProductCard";
 import cartContext from "../cart/CartContext";
+import { Link } from 'react-router-dom';
+
 
 class CategoryPage extends React.Component {
     constructor(props) {
@@ -12,7 +14,7 @@ class CategoryPage extends React.Component {
             productsCategory: [],
             currencySymbols: '',
             states: null,
-            add: window.location.pathname.slice(10, window.location.href.length)
+            add: "all"/*window.location.pathname.slice(10, window.location.href.length)*/
         }
 
     }
@@ -22,7 +24,7 @@ class CategoryPage extends React.Component {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                query: this.context.queryOfCategory(this.state.add)
+                query: this.context.queryOfCategory(this.context.addCategory)
 
             })
         }
@@ -35,9 +37,9 @@ class CategoryPage extends React.Component {
 
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevState.add !== window.location.pathname.slice(10, window.location.href.length)){
+        if(prevState.add !== this.context.addCategory){
             this.setState({
-                add: window.location.pathname.slice(10, window.location.href.length)
+                add: this.context.addCategory
             })
             this.componentDidMount();
         }
