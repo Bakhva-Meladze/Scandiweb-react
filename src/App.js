@@ -16,7 +16,6 @@ class App extends React.Component {
         return (
             <div className="App">
                 <Queres>
-                    <FetchData>
                         <CartProvider>
                             <Header>
                                 <Overlay>
@@ -40,8 +39,6 @@ class App extends React.Component {
                                 </Route>
                             </BrowserRouter>
                         </CartProvider>
-                    </FetchData>
-
                 </Queres>
             </div>
         )

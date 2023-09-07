@@ -6,17 +6,25 @@ class FetchData extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state ={
 
+        }
     }
 
     componentDidMount() {
 
     }
-    render() {
-        return(<div>
-            {this.props.children}
+      changeUrl = () => {
 
-        </div>)
+    }
+
+    render() {
+        const {changeUrl} =this;
+
+        return(
+            <CartContext.Provider value={{changeUrl}}>
+                {this.props.children}
+            </CartContext.Provider>)
     }
 }
 

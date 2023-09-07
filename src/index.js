@@ -4,6 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {BrowserRouter as Router} from "react-router-dom";
 import * as PropTypes from "prop-types";
+import FetchData from "./FetchData";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -12,9 +13,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <React.StrictMode>
-        <Router>
-            <App />
-        </Router>
+        <FetchData>
+            <Router>
+                <App />
+            </Router>
+        </FetchData>
     </React.StrictMode>
 );
 
