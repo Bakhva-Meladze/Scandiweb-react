@@ -7,14 +7,34 @@ class FetchData extends React.Component {
     constructor(props) {
         super(props);
         this.state ={
+            url: ""
 
         }
     }
 
     componentDidMount() {
+        // window.location.pathname
 
     }
-      changeUrl = () => {
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(window.location.pathname !== this.state.url){
+            window.history.pushState({}, '', this.state.url);
+
+        }
+    }
+
+    changeUrl = (event) => {
+          if (event.metaKey || event.ctrlKey) {
+              return;
+          }
+          event.preventDefault();
+          this.setState({
+              url: "Cart"
+          })
+
+
+
+
 
     }
 
@@ -24,6 +44,7 @@ class FetchData extends React.Component {
         return(
             <CartContext.Provider value={{changeUrl}}>
                 {this.props.children}
+
             </CartContext.Provider>)
     }
 }
