@@ -10,7 +10,7 @@ class OverlayButtons extends React.Component {
         return (
             <div>
                 <button className={"overflow-button-wiev"}
-                        onClick={() =>  window.location.pathname = "/Cart"}>
+                        onClick={this.props.changeUrl}>
                     <span className="overflow-value">VIEW BAG</span>
                 </button>
                 <button className="overflow-button-checkout"
