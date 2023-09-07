@@ -91,14 +91,18 @@ class Queres extends React.Component {
     }
 
     render() {
+        const {changeUrl} = this.context;
         const {queryOfProduct,queryOfCategory,currencyPriceQuery} =this;
         return (
-            <CartContext.Provider value={{queryOfProduct,queryOfCategory,currencyPriceQuery}}>
+            <CartContext.Provider value={{
+                queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl}}>
                 {this.props.children}
             </CartContext.Provider>
 
         )
     }
 }
+Queres.contextType = CartContext;
+
 
 export default Queres

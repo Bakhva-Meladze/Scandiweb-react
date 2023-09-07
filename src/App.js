@@ -13,8 +13,10 @@ import FetchData from "./FetchData";
 
 class App extends React.Component {
     render() {
+        console.log("hii");
         return (
             <div className="App">
+
                 <Queres>
                         <CartProvider>
                             <Header>
@@ -34,7 +36,7 @@ class App extends React.Component {
                                 <Route path="/Product/:id">
                                     <ProductPage/>
                                 </Route>
-                                <Route path="/Cart">
+                                <Route path="category/Cart">
                                     <Cart/>
                                 </Route>
                             </BrowserRouter>
