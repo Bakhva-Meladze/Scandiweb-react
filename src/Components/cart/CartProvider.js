@@ -180,7 +180,7 @@ class CartProvider extends Component {
     }
 
     render() {
-        const {queryOfProduct,queryOfCategory,currencyPriceQuery} = this.context;
+        const {queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl} = this.context;
         const {cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,addCategory} = this.state;
         const {SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart, testType,secondTest,
             } = this;
@@ -189,7 +189,7 @@ class CartProvider extends Component {
             <CartContext.Provider value={{
                 cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,addCategory,
                 SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart,testType,secondTest,
-                queryOfProduct,queryOfCategory,currencyPriceQuery
+                queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl
             }}>
                 {this.props.children}
             </CartContext.Provider>
