@@ -12,7 +12,7 @@ class Cart extends React.Component {
             <CartContext.Consumer>
                 {({
                       cachedData, listOfCartProducts, productsPrices, pricesAttributes, ChangeProductInCart,
-                      currencyKey, QuantityOfProducts
+                      currencyKey, QuantityOfProducts,changeUrl
                   }) => (
                     <div>
                         <div>
@@ -62,7 +62,9 @@ class Cart extends React.Component {
                                     prices={cachedData?.map((value, key) => value.length * productsPrices[key])}
                                     QuantityOfProducts={QuantityOfProducts()}
                                 />
-                                {this.props.dataFromHeader ? <OverlayButtons cart={this.props.cart}/> : null}
+                                {this.props.dataFromHeader ?
+                                    <OverlayButtons changeUrl={changeUrl}
+                                                    cart={this.props.cart}/> : null}
                             </div>
                         </div>
                     </div>
