@@ -36,7 +36,7 @@ class App extends React.Component {
                                 <Route path="/Product/:id">
                                     <ProductPage/>
                                 </Route>
-                                <Route path="category/Cart">
+                                <Route path="/Cart">
                                     <Cart/>
                                 </Route>
                             </BrowserRouter>
