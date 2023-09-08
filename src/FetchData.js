@@ -1,6 +1,6 @@
 import React from "react";
 import CartContext from "./Components/cart/CartContext";
-
+import { useHistory } from 'react-router-dom';
 
 class FetchData extends React.Component {
 
@@ -10,6 +10,8 @@ class FetchData extends React.Component {
             url: ""
 
         }
+        window.addEventListener('popstate',()=>console.log("I am a"+ window.location.pathname));
+
     }
 
     componentDidMount() {
@@ -24,18 +26,12 @@ class FetchData extends React.Component {
     }
 
     changeUrl = (event) => {
-          if (event.metaKey || event.ctrlKey) {
-              return;
-          }
-          event.preventDefault();
+
+
+        event.preventDefault();
           this.setState({
               url: "Cart"
-          })
-
-
-
-
-
+          });
     }
 
     render() {
