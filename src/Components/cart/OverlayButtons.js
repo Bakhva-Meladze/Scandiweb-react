@@ -1,8 +1,22 @@
 import React from "react";
 import { useHistory } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
+import {useCart} from "../../useContext";
 
 
 class OverlayButtons extends React.Component {
+
+    /*goToCartPage = () => {
+        this.props.history.push("/Cart");
+        this.toggleOverlay();
+    };*/
+    handleAddToCart = () => {
+        alert("hi");
+        this.props.history.push("/cart");
+        this.toggleOverlay();
+         useCart(); // Access the addToCart function from the context
+
+    };
 
 
 
@@ -20,6 +34,10 @@ class OverlayButtons extends React.Component {
             </div>
         )
     }
+
+    toggleOverlay() {
+
+    }
 }
 
-export default OverlayButtons
+export default withRouter(OverlayButtons)
