@@ -23,21 +23,27 @@ class Overlay extends React.Component {
     render() {
         return (
             <CartContext.Consumer>
-                {({QuantityOfProducts,ChangeOverlay}) => (
+                {({QuantityOfProducts}) => (
                     <>
                         <div className={this.state.filterCart ? "basket-container" : "basket-container remove-display"}
-                             onClick={() => ChangeOverlay()}>
+                             onClick={() => this.OpenCart()}>
                             <img className="basket" src={icon} alt={"basket"}/>
                             <div className="circle">
                                 <span className="circle-value">{QuantityOfProducts()}</span>
                             </div>
                         </div>
                         <div className={this.state.showCartOverlay ? "overlay" : "remove"}>
-                            {React.cloneElement(this.props.children, {
-                                cart: this.OpenCart,
-                                dataFromHeader: true
-                            })}
+                            <div className="cart-overlay">
+                                <div className="title">
+                                        <span className="brand">{"My Bag  ,"}</span>
+                                        <span className="items">{QuantityOfProducts()} items</span>
+                                    :
+                                    <span>CART</span>
+                                </div>
+                            </div>
+
                         </div>
+
                     </>
 
                 )}
