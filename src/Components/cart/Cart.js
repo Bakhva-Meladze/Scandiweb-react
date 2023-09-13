@@ -17,7 +17,7 @@ class Cart extends React.Component {
                     <div>
                         <div>
                             <div className={`${openOverlay? "cart-overlay" : "cart"}`}>
-                                <div className="title">
+                                {/*<div className="title">
                                     {openOverlay?
                                         <>
                                             <span className="brand">{"My Bag  ,"}</span>
@@ -25,7 +25,7 @@ class Cart extends React.Component {
                                         </> :
                                         <span>CART</span>
                                     }
-                                </div>
+                                </div>*/}
                                 {listOfCartProducts?.map((product, index) => (
                                     <div
                                         className={`${openOverlay? "container-overflow-item" : "container-item"}`}

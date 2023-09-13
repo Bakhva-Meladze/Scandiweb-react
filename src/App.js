@@ -6,7 +6,7 @@ import ProductPage from "./Components/ProductPage/ProductPage";
 import Cart from "./Components/cart/Cart";
 import "./Style/Style.css";
 import ProductCard from "./Components/CategoryPage/ProductCard";
-import Overlay from "./Components/Header/Overlay";
+import Overlay from "./Components/Header/overlay/Overlay";
 import CartProvider from "./Components/cart/CartProvider";
 import Queres from "./querys/Queres";
 import FetchData from "./FetchData";

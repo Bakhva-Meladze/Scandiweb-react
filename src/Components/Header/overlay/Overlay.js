@@ -1,9 +1,9 @@
 import React from "react";
-import icon from '../../images/emptyCart.svg';
-import Category from "./Category";
-import iconBox from "../../images/logo.svg";
-import Currency from "./Currency";
-import CartContext from "../cart/CartContext";
+import icon from '../../../images/emptyCart.svg';
+import Category from "../Category";
+import iconBox from "../../../images/logo.svg";
+import Currency from "../Currency";
+import CartContext from "../../cart/CartContext";
 
 class Overlay extends React.Component {
     constructor(props) {
