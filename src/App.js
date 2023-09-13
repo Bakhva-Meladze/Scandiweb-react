@@ -19,14 +19,14 @@ class App extends React.Component {
 
                 <Queres>
                         <CartProvider>
-                            <Header>
-                                <Overlay>
-                                    <Cart/>
-                                </Overlay>
-                            </Header>
+
                             <BrowserRouter>
-                                <Route exact path="/">
-                                    <Redirect to="category/all"/>
+                                <Route  path="/">
+                                    <Header>
+                                        <Overlay>
+                                            <Cart/>
+                                        </Overlay>
+                                    </Header>
                                 </Route>
                                 <Route path="/category/:items">
                                     <CategoryPage>
