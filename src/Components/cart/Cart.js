@@ -12,13 +12,13 @@ class Cart extends React.Component {
             <CartContext.Consumer>
                 {({
                       cachedData, listOfCartProducts, productsPrices, pricesAttributes, ChangeProductInCart,
-                      currencyKey, QuantityOfProducts,changeUrl
+                      currencyKey, QuantityOfProducts,changeUrl,openOverlay
                   }) => (
                     <div>
                         <div>
-                            <div className={`${this.props.dataFromHeader ? "cart-overlay" : "cart"}`}>
+                            <div className={`${openOverlay? "cart-overlay" : "cart"}`}>
                                 <div className="title">
-                                    {this.props.dataFromHeader ?
+                                    {openOverlay?
                                         <>
                                             <span className="brand">{"My Bag  ,"}</span>
                                             <span className="items">{QuantityOfProducts()} items</span>
@@ -28,10 +28,10 @@ class Cart extends React.Component {
                                 </div>
                                 {listOfCartProducts?.map((product, index) => (
                                     <div
-                                        className={`${this.props.dataFromHeader ? "container-overflow-item" : "container-item"}`}
+                                        className={`${openOverlay? "container-overflow-item" : "container-item"}`}
                                         key={index}>
                                         <Items
-                                            dataFromHeader={this.props.dataFromHeader}
+                                            dataFromHeader={openOverlay}
                                             chooseItemID={product.chooseItemID}
                                             brand={product.brand}
                                             name={product.name}
@@ -40,15 +40,15 @@ class Cart extends React.Component {
                                             currencyKey={currencyKey}
                                         />
                                         <div
-                                            className={`${this.props.dataFromHeader ? "content-right-overflow" : "content-right"}`}>
+                                            className={`${openOverlay? "content-right-overflow" : "content-right"}`}>
                                             <ChangeQuantity
-                                                dataFromHeader={this.props.dataFromHeader}
+                                                dataFromHeader={openOverlay}
                                                 ChangeProductInCart={ChangeProductInCart}
                                                 productQuantity={product.length}
                                                 index={index}
                                             />
                                             <ImageSlider
-                                                dataFromHeader={this.props.dataFromHeader}
+                                                dataFromHeader={openOverlay}
                                                 images={product.gallery}
                                                 myKey={index}
                                             />
@@ -56,13 +56,13 @@ class Cart extends React.Component {
                                     </div>
                                 ))}
                                 <Summary
-                                    dataFromHeader={this.props.dataFromHeader}
+                                    dataFromHeader={openOverlay}
                                     pricesAttributes={pricesAttributes}
                                     currencyKey={currencyKey}
                                     prices={cachedData?.map((value, key) => value.length * productsPrices[key])}
                                     QuantityOfProducts={QuantityOfProducts()}
                                 />
-                                {this.props.dataFromHeader ?
+                                {openOverlay?
                                     <OverlayButtons changeUrl={changeUrl}
                                                     cart={this.props.cart}/> : null}
                             </div>
