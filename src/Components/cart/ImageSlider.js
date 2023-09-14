@@ -24,11 +24,11 @@ class ImageSlider extends React.Component {
 
     render() {
         return (
-            <div className={`${this.props.dataFromHeader ? "imgs-overflow" : "imgs"}`}>
-                <img className={`${this.props.dataFromHeader ? "img-overflow" : "img"}`}
+            <div className="imgs">
+                <img className="img"
                      key={this.props.myKey} src={this.props.images[this.state.keyOfImages]}/>
                 <div
-                    className={`${this.props.dataFromHeader ? "container-of-arrow-img-overflow" : "container-of-arrow"}`}>
+                    className= "container-of-arrow">
                     <button className="show-arrow"
                             onClick={() => this.GoTheImage("left")}>
                         {"<"}
