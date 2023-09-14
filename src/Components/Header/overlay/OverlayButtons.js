@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
-import {useCart} from "../../useContext";
+import {useCart} from "../../../useContext";
 
 
 class OverlayButtons extends React.Component {
