@@ -5,6 +5,7 @@ import Error from "../../Error";
 import Category from "./Category";
 import Currency from "./Currency";
 import CartContext from "../cart/CartContext";
+import Overlay from "./overlay/Overlay";
 
 class Header extends React.Component {
     constructor(props) {
@@ -57,10 +58,7 @@ class Header extends React.Component {
                                       currency={this.state.currency}
                                       currencyKey={currencyKey}
                             />
-                            {React.cloneElement(
-                                this.props.children, {
-                                    QuantityOfProducts: QuantityOfProducts()
-                                })}
+                           <Overlay />
                         </div>
                     </div>
                 )}
