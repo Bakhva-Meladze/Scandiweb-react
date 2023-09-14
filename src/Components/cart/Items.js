@@ -17,19 +17,17 @@ class Items extends React.Component {
                     {this.props.currency[this.props.currencyKey]?.currency.symbol}
                     {this.props.currency[this.props.currencyKey]?.amount}
                 </div>
-                <div className={`${this.props.dataFromHeader ? "attribute-overlay" : "attribute"}`}>
+                <div className="attribute">
                     <span
-                        className={`${this.props.dataFromHeader ? "size-overlay" : "size"}`}>
+                        className="size">
                         {this.props.productAttributes[0]?.id ? this.props.productAttributes[0]?.id + ":" : ''}
                     </span>
-                    <div className={`${this.props.dataFromHeader ? "items-overlay" : "items"}`}>
+                    <div className="items">
                         {this.props.productAttributes[0]?.items.map((item, key) => (
-                            <div className={`${this.props.dataFromHeader ?
-                                this.props.chooseItemID === item.id ? "item-overlay color" : "item-overlay"
-                                : this.props.chooseItemID === item.id ? "item color" : "item"}`}
+                            <div className={this.props.chooseItemID === item.id ? "item color" : "item"}
                                  key={item.id}>
                                    <span
-                                       className={`${this.props.dataFromHeader ? "value-overlay" : "value"}`}>
+                                       className={"value"}>
                                         {item.value}
                                    </span>
                             </div>
