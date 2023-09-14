@@ -3,32 +3,19 @@ import ImageSlider from "./ImageSlider";
 import Items from "./Items"
 import Summary from "./Summary"
 import ChangeQuantity from "./ChangeQuantity";
-import OverlayButtons from "./OverlayButtons";
 import CartContext from "./CartContext";
 
 class Cart extends React.Component {
     render() {
         return (
             <CartContext.Consumer>
-                {({
-                      cachedData, listOfCartProducts, productsPrices, pricesAttributes, ChangeProductInCart,
-                      currencyKey, QuantityOfProducts,changeUrl,openOverlay
-                  }) => (
+                {({cachedData, listOfCartProducts, productsPrices, pricesAttributes, ChangeProductInCart, currencyKey,
+                      QuantityOfProducts,openOverlay }) => (
                     <div>
                         <div>
-                            <div className={`${openOverlay? "cart-overlay" : "cart"}`}>
-                                {/*<div className="title">
-                                    {openOverlay?
-                                        <>
-                                            <span className="brand">{"My Bag  ,"}</span>
-                                            <span className="items">{QuantityOfProducts()} items</span>
-                                        </> :
-                                        <span>CART</span>
-                                    }
-                                </div>*/}
+                            <div className= "cart">
                                 {listOfCartProducts?.map((product, index) => (
-                                    <div
-                                        className={`${openOverlay? "container-overflow-item" : "container-item"}`}
+                                    <div className={`${openOverlay? "container-overflow-item" : "container-item"}`}
                                         key={index}>
                                         <Items
                                             dataFromHeader={openOverlay}
@@ -62,9 +49,6 @@ class Cart extends React.Component {
                                     prices={cachedData?.map((value, key) => value.length * productsPrices[key])}
                                     QuantityOfProducts={QuantityOfProducts()}
                                 />
-                                {openOverlay?
-                                    <OverlayButtons changeUrl={changeUrl}
-                                                    cart={this.props.cart}/> : null}
                             </div>
                         </div>
                     </div>
