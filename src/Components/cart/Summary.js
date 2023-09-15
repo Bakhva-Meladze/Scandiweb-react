@@ -23,7 +23,6 @@ class Summary extends React.Component {
 
     deleteLocalStorage() {
         localStorage.removeItem("cartProducts");
-        window.location.reload();
     }
 
     render() {

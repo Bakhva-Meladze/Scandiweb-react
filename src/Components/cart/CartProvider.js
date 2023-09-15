@@ -15,7 +15,7 @@ class CartProvider extends Component {
             productsPrices: [],
             pricesAttributes: [],
             currencyKey: localStorage.getItem("currencyKey") ? localStorage.getItem("currencyKey") : 0,
-            addCategory: "",
+            addCategory: window.location.pathname.slice(10, window.location.href.length),
             openOverlay: false
         }
 
@@ -178,8 +178,11 @@ class CartProvider extends Component {
         });
     }
     testType =(data) =>{
+
+
         this.setState({
-            addCategory:data})
+            addCategory:data
+        })
     }
     secondTest =(data) =>{
         console.log(data);
