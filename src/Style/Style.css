@@ -38,10 +38,14 @@
   border: none;
 }
 .header .navigation .btn .btns {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #1d1f22;
   padding: 0;
   border: none;
   background: none;
-  text-transform: uppercase;
 }
 .header .navigation label:hover {
   border-bottom: 2px solid green;
