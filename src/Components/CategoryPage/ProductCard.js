@@ -1,5 +1,6 @@
 import React from "react";
 import cartIcon from "../../images/whiteCart.svg";
+import {Link} from "react-router-dom";
 
 class ProductCard extends React.Component {
     constructor(props) {
@@ -9,7 +10,11 @@ class ProductCard extends React.Component {
     }
 
     ProductPage() {
-        window.location.pathname = "/Product/" + this.props.productCategory.id;
+
+        window.location.pathname = "/product/" + this.props.productCategory.id;
+
+
+
     }
 
     render() {
@@ -19,11 +24,12 @@ class ProductCard extends React.Component {
                       className={`${this.props.productCategory.inStock === true ? "" : "value-stock"}`}>
                     {"OUT OF THE STOCK"}
                 </span>
-                <img className={`${this.props.productCategory.inStock === true ? "pictures" : "out-stock"}`}
-                     onClick={() => !this.props.productCategory.inStock ? "" : this.ProductPage()}
-                     src={this.props.productCategory.gallery[0]}
-                     alt="Product"
-                />
+                <Link to={`/product/${this.props.productCategory.id}`} >
+                    <img className={`${this.props.productCategory.inStock === true ? "pictures" : "out-stock"}`}
+                         src={this.props.productCategory.gallery[0]}
+                         alt="Product"
+                    />
+                </Link>
                 <div className="basket-img">
                     <img className="img-value"
                          onClick={() => !this.props.productCategory.inStock ? ""
