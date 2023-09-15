@@ -1,7 +1,7 @@
 import CategoryPage from "./Components/CategoryPage/CategoryPage";
 import Header from "./Components/Header/Header";
 import React from "react";
-import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes, Redirect, BrowserRouter, Switch} from "react-router-dom";
 import ProductPage from "./Components/ProductPage/ProductPage";
 import Cart from "./Components/cart/Cart";
 import "./Style/Style.css";
@@ -10,6 +10,7 @@ import Overlay from "./Components/Header/overlay/Overlay";
 import CartProvider from "./Components/cart/CartProvider";
 import Queres from "./querys/Queres";
 import FetchData from "./FetchData";
+import * as PropTypes from "prop-types";
 
 class App extends React.Component {
     render() {
@@ -19,16 +20,20 @@ class App extends React.Component {
 
                 <Queres>
                         <CartProvider>
-
                             <BrowserRouter>
-                                <Route  path="/">
-                                    <Header>
-                                        <Overlay>
+                                <Header />
+                                <Switch>
+                                        <Route path="/category/:item">
+                                            <CategoryPage />
+                                        </Route>
+                                        <Route path="/product/:productId">
+                                            <ProductPage />
+                                        </Route>
+                                        <Route path="/Cart">
                                             <Cart/>
-                                        </Overlay>
-                                    </Header>
-                                </Route>
-                                <Route path="/category/:items">
+                                        </Route>
+                                    </Switch>
+                                    {/*<Route path="/category/:items">
                                     <CategoryPage>
                                         <ProductCard/>
                                     </CategoryPage>
@@ -38,7 +43,7 @@ class App extends React.Component {
                                 </Route>
                                 <Route path="/Cart">
                                     <Cart/>
-                                </Route>
+                                </Route>*/}
                             </BrowserRouter>
                         </CartProvider>
                 </Queres>
