@@ -56,7 +56,7 @@ class Overlay extends React.Component {
                                             />
                                             <div className="content-right-overflow">
                                                 <ChangeQuantity
-                                                     ChangeProductInCart={ChangeProductInCart}
+                                                    ChangeProductInCart={ChangeProductInCart}
                                                     productQuantity={product.length}
                                                     index={index}
                                                 />
@@ -73,7 +73,7 @@ class Overlay extends React.Component {
                                         prices={cachedData?.map((value, key) => value.length * productsPrices[key])}
                                         QuantityOfProducts={QuantityOfProducts()}
                                     />
-                                    <OverlayButtons />
+                                    <OverlayButtons cart={this.OpenCart} />
                                 </div>
                             </div>
                         )}

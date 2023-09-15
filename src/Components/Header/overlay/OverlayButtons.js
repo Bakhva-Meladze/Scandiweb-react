@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import {useCart} from "../../../useContext";
 
@@ -23,10 +23,11 @@ class OverlayButtons extends React.Component {
     render() {
         return (
             <div>
-                <button className={"overflow-button-wiev"}
-                        onClick={this.props.changeUrl}>
+                <Link  to={"/cart"}>
+                    <button className="overflow-button-wiev">
                     <span className="overflow-value">VIEW BAG</span>
                 </button>
+                </Link>
                 <button className="overflow-button-checkout"
                         onClick={() => this.props.cart(false)}>
                     <span className="overflow-value-checkout">CHECK OUT</span>
