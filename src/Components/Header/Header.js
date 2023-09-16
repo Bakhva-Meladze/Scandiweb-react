@@ -13,7 +13,8 @@ class Header extends React.Component {
         this.state = {
             currency: [],
             categories: [],
-            error: null
+            error: null,
+            filter: true
         }
     }
 
@@ -30,7 +31,8 @@ class Header extends React.Component {
             const responseData = await response.json();
             this.setState({
                 currency: responseData.data.product.prices,
-                categories: responseData.data.categories
+                categories: responseData.data.categories,
+                filter: false
             });
         } catch (Error) {
             this.setState({
@@ -47,10 +49,13 @@ class Header extends React.Component {
                 </div>
             )
         }
+        console.log("hi");
         return (
             <CartContext.Consumer>
                 {({SelectCurrency, QuantityOfProducts, currencyKey,testType}) => (
                     <div className="header">
+                        {this.state.filter? <h1>Loading...</h1>:''}
+
                         <Category  categories={this.state.categories} testType ={testType}/>
                         <div className="logo"><img src={iconBox} alt="logo"/></div>
                         <div className="right">
