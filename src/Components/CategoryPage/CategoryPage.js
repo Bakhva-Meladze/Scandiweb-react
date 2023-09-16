@@ -4,6 +4,7 @@ import CartContext from "../cart/CartContext";
 import ProductCard from "./ProductCard";
 import cartContext from "../cart/CartContext";
 import { Link } from 'react-router-dom';
+import Loading from "../../Loading";
 
 
 class CategoryPage extends React.Component {
@@ -50,7 +51,7 @@ class CategoryPage extends React.Component {
             <CartContext.Consumer>
                 {({AddProductInCart, pricesAttributes,currencyKey}) => (
                     <div className="category-page">
-                        {this.state.filter? <h1>Loading...</h1>:null}
+                        {this.state.filter?<Loading />:null}
 
                         {this.state.productsCategory.map((productCategory, key) => (
                             <ProductCard key={productCategory.id} productCategory={productCategory}
