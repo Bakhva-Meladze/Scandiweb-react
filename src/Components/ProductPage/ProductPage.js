@@ -21,7 +21,8 @@ class ProductPage extends React.Component {
             size: "",
             currencySymbol: [],
             currencyAmount: [],
-            img: []
+            img: [],
+            filter: true
         }
     }
 
@@ -44,6 +45,7 @@ class ProductPage extends React.Component {
                 description: responseData.data.product.description,
                 size: !responseData.data.product.attributes[0] ? [] : responseData.data.product.attributes[0].id + ":",
                 currencySymbol: responseData.data.product.prices,
+                filter:false
             });
         }).catch(Error => {
             this.setState({error: 'Network response of ProductPage is not ok ' + Error})
@@ -64,11 +66,12 @@ class ProductPage extends React.Component {
                 </div>
             )
         }
-
         return (
             <CartContext.Consumer>
                 {({AddProductInCart, currencyKey}) => (
                     <div className="main-product">
+                        {this.state.filter? <h1>Loading...</h1>:null}
+
                         <Slider className="container-pic" img={this.state.img}/>
                         <div className="product-details">
                             <div>
