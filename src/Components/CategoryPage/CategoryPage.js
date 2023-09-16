@@ -14,7 +14,8 @@ class CategoryPage extends React.Component {
             productsCategory: [],
             currencySymbols: '',
             states: null,
-            add: "all"/*window.location.pathname.slice(10, window.location.href.length)*/
+            add: "all"/*window.location.pathname.slice(10, window.location.href.length)*/,
+            filter: true
         }
 
     }
@@ -31,8 +32,8 @@ class CategoryPage extends React.Component {
         fetch(url, responseOption).then(response => response.json()).then(responseData => {
             this.setState({
                 productsCategory: responseData.data.category.products,
+                filter: false
             })
-
         })
 
     }
@@ -49,6 +50,7 @@ class CategoryPage extends React.Component {
             <CartContext.Consumer>
                 {({AddProductInCart, pricesAttributes,currencyKey}) => (
                     <div className="category-page">
+                        {this.state.filter? <h1>Loading...</h1>:null}
 
                         {this.state.productsCategory.map((productCategory, key) => (
                             <ProductCard key={productCategory.id} productCategory={productCategory}
