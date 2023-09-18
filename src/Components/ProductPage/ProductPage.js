@@ -5,6 +5,7 @@ import Slider from "./Slider";
 import Items from "./Items";
 import Error from "../../Error";
 import CartContext from "../cart/CartContext"
+import Loading from "../../Loading";
 
 class ProductPage extends React.Component {
     static contextType = CartContext;
@@ -70,7 +71,7 @@ class ProductPage extends React.Component {
             <CartContext.Consumer>
                 {({AddProductInCart, currencyKey}) => (
                     <div className="main-product">
-                        {this.state.filter? <h1>Loading...</h1>:null}
+                        {this.state.filter?<Loading />:null}
 
                         <Slider className="container-pic" img={this.state.img}/>
                         <div className="product-details">
