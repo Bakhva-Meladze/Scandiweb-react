@@ -6,6 +6,7 @@ import Category from "./Category";
 import Currency from "./Currency";
 import CartContext from "../cart/CartContext";
 import Overlay from "./overlay/Overlay";
+import Loading from "../../Loading";
 
 class Header extends React.Component {
     constructor(props) {
@@ -54,7 +55,7 @@ class Header extends React.Component {
             <CartContext.Consumer>
                 {({SelectCurrency, QuantityOfProducts, currencyKey,testType}) => (
                     <div className="header">
-                        {this.state.filter? <h1>Loading...</h1>:''}
+                        {this.state.filter?<Loading />:''}
 
                         <Category  categories={this.state.categories} testType ={testType}/>
                         <div className="logo"><img src={iconBox} alt="logo"/></div>
