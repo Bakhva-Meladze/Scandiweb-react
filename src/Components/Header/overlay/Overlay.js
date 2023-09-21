@@ -68,9 +68,9 @@ class Overlay extends React.Component {
                                         </div>
                                     ))}
                                     <Summary
-                                        pricesAttributes={pricesAttributes}
+                                        pricesAttributes={productsPrices}
                                         currencyKey={currencyKey}
-                                        prices={cachedData?.map((value, key) => value.length * productsPrices[key])}
+                                        prices={cachedData?.map((value, key) => value.length * productsPrices[key].amount)}
                                         QuantityOfProducts={QuantityOfProducts()}
                                     />
                                     <OverlayButtons cart={this.OpenCart} />
