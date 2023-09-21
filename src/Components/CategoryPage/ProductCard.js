@@ -35,7 +35,14 @@ class ProductCard extends React.Component {
                          onClick={() => !this.props.productCategory.inStock ? ""
                              : this.props.AddProductInCart(
                                  this.props.productCategory.id,
-                                 this.props.productCategory.attributes[0]?.items[0]?.id
+                                 this.props.productCategory.attributes[0]?.items[0]?.id,
+                                 this.props.productCategory.gallery,
+                                 this.props.productCategory.prices,
+                                 this.props.productCategory.attributes[0]?.items,
+                                 this.props.productCategory.brand,
+                                 this.props.productCategory.name,
+
+
                              )}
                          src={cartIcon} alt="Cart"/>
                 </div>
