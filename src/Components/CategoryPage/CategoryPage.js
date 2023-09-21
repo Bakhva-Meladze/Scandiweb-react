@@ -54,7 +54,8 @@ class CategoryPage extends React.Component {
                         {this.state.filter?<Loading />:null}
 
                         {this.state.productsCategory.map((productCategory, key) => (
-                            <ProductCard key={productCategory.id} productCategory={productCategory}
+                            <ProductCard key={productCategory.id}
+                                         productCategory={productCategory}
                                          AddProductInCart={AddProductInCart}
                                          pricesAttributes={pricesAttributes}
                                          currencyKey={currencyKey}
