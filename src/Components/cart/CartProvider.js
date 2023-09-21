@@ -133,7 +133,7 @@ class CartProvider extends Component {
     SelectCurrency = (data = 0) => {
         let array = [];
          this.context.cachedData?.map((value, key) => (
-            array.push(this.context.cachedData[key].prices[data].amount)
+            array.push(this.context.cachedData[key].prices[data])
         ));
         localStorage.setItem("currencyKey", JSON.stringify(data));
         this.setState({
@@ -213,8 +213,8 @@ class CartProvider extends Component {
     render() {
         const {
             queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,AddProductInCart,ChangeProductInCart,
-            cachedData,testData} = this.context;
-        const { productsPrices, pricesAttributes, currencyKey,addCategory,openOverlay,listOfCartProducts} = this.state;
+            cachedData,testData,currencyKey,productsPrices} = this.context;
+        const {pricesAttributes,addCategory,openOverlay,listOfCartProducts} = this.state;
         const {SelectCurrency, QuantityOfProducts, testType,secondTest,ChangeOverlay} = this;
 
         return (
