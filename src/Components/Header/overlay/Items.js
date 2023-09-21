@@ -11,12 +11,12 @@ class Items extends React.Component {
                 {this.props.currency[this.props.currencyKey]?.amount}
             </div>
             <div className= "attribute-overlay">
-                    <span
+                  {/*  <span
                         className="size-overlay">
-                        {this.props.productAttributes[0]?.id ? this.props.productAttributes[0]?.id + ":" : ''}
-                    </span>
+                        {this.props.productAttributes[0]?.id ? this.props.productAttributes.items[0] + ":" : ''}
+                    </span>*/}
                 <div className="items-overlay">
-                    {this.props.productAttributes[0]?.items.map((item, key) => (
+                    {this.props.productAttributes.map((item, key) => (
                         <div className={this.props.chooseItemID === item.id ? "item-overlay color" : "item-overlay"}
                              key={item.id}>
                                    <span
