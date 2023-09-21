@@ -44,14 +44,14 @@ class Overlay extends React.Component {
                                         :
                                         <span>CART</span>
                                     </div>
-                                    {listOfCartProducts.map((product,index)=>(
+                                    {cachedData.map((product,index)=>(
                                         <div key={index} className="container-overflow-item">
                                             <Items
                                                 chooseItemID={product.chooseItemID}
                                                 brand={product.brand}
                                                 name={product.name}
                                                 currency={product.prices}
-                                                productAttributes={product.attributes}
+                                                productAttributes={product.items}
                                                 currencyKey={currencyKey}
                                             />
                                             <div className="content-right-overflow">
