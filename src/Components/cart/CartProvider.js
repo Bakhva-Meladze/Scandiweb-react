@@ -5,21 +5,35 @@ import Header from "../Header/Header";
 
 
 class CartProvider extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            cachedData: localStorage.getItem('cartProducts')
-                ? JSON.parse(localStorage.getItem('cartProducts'))
-                : null,
+            data: null,
+
             listOfCartProducts: [],
             productsPrices: [],
             pricesAttributes: [],
             currencyKey: localStorage.getItem("currencyKey") ? localStorage.getItem("currencyKey") : 0,
             addCategory: window.location.pathname.slice(10, window.location.href.length),
             openOverlay: false
+
         }
+        this.data();
+
 
     }
+
+    data (){
+    }
+        /*let array = [];
+        this.context.cachedData?.map((value, key) => (
+            array.push(this.context.cachedData[key].prices[0].amount)
+        ));
+        this.setState({
+            productsPrices: array
+        });
+    }*/
     ChangeOverlay =(e) =>{
         this.setState({
             openOverlay: !this.state.openOverlay
@@ -27,7 +41,7 @@ class CartProvider extends Component {
 
     }
 
-    AddProductInCart = (id, choseItemID, length = 1) => {
+    /*AddProductInCart = (id, choseItemID, length = 1) => {
         const Object = {
             id: id,
             choseItemID: choseItemID,
@@ -71,24 +85,26 @@ class CartProvider extends Component {
                 cachedData: [Object]
             })
         }
-    }
+    }*/
 
-    componentDidMount() {
+    /*componentDidMount() {
         let arr = [];
-        this.state.cachedData?.forEach((value, key) => {
+        console.log("holla");
+        this.context.cachedData?.forEach((value, key) => {
             const responseOption = {
                 method: 'POST',
                 headers: {'Content-type': 'application/json'},
                 body: JSON.stringify({
-                    query: this.context.queryOfProduct(this.state.cachedData[key].id)
+                    query: this.context.queryOfProduct(this.context.cachedData[key].id)
                 })
             };
+            console.log(arr);
 
             fetch(url, responseOption).then(response => response.json()).then(responseData => {
                 const adjustedProduct = {
                     ...responseData.data.product,
-                    length: this.state.cachedData[key].length,
-                    chooseItemID: this.state.cachedData[key].choseItemID,
+                    length: this.context.cachedData[key].length,
+                    chooseItemID: this.context.cachedData[key].choseItemID,
                     id: key
                 };
 
@@ -98,40 +114,45 @@ class CartProvider extends Component {
                         listOfCartProducts: [...arr],
                         productsPrices: [...productState.productsPrices, responseData.data.product.prices[0].amount],
                         pricesAttributes: [...productState.pricesAttributes, ...responseData.data.product.prices],
+                        data: this.context.cachedData.length
                     }));
                 }
             });
         });
-    }
+    }*/
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevState.cachedData?.length !== this.state.cachedData?.length) {
+        console.log(prevProps.data?.length, this.context.cachedData?.length)
+
+
+       /* if (prevProps.data?.length !== this.context.cachedData?.length) {
             this.componentDidMount();
-        }
+        }*/
     }
 
     SelectCurrency = (data = 0) => {
         let array = [];
-        this.state.cachedData?.map((value, key) => (
-            array.push(this.state.listOfCartProducts[key].prices[data].amount)
+         this.context.cachedData?.map((value, key) => (
+            array.push(this.context.cachedData[key].prices[data].amount)
         ));
         localStorage.setItem("currencyKey", JSON.stringify(data));
         this.setState({
             currencyKey: data,
             productsPrices: array
         });
+         this.context.testData(data,array);
     }
 
     QuantityOfProducts = () => {
         let sumResult = 0;
-        this.state.cachedData?.map((value) => (
+        this.context.cachedData?.map((value) => (
             sumResult += value.length
         ));
 
         return sumResult;
     }
 
-    ChangeProductInCart = (type, key) => {
+    /*ChangeProductInCart = (type, key) => {
         let Object = this.state.cachedData;
 
         if (type === "increase") {
@@ -176,7 +197,7 @@ class CartProvider extends Component {
         this.setState({
             listOfCartProducts: listOfCartProducts
         });
-    }
+    }*/
     testType =(data) =>{
 
 
@@ -190,16 +211,17 @@ class CartProvider extends Component {
     }
 
     render() {
-        const {queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl} = this.context;
-        const {cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,addCategory,openOverlay} = this.state;
-        const {SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart, testType,secondTest,ChangeOverlay
-            } = this;
+        const {
+            queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,AddProductInCart,ChangeProductInCart,
+            cachedData,testData} = this.context;
+        const { productsPrices, pricesAttributes, currencyKey,addCategory,openOverlay,listOfCartProducts} = this.state;
+        const {SelectCurrency, QuantityOfProducts, testType,secondTest,ChangeOverlay} = this;
 
         return (
             <CartContext.Provider value={{
-                cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,addCategory,openOverlay,
-                SelectCurrency, AddProductInCart, QuantityOfProducts, ChangeProductInCart,testType,secondTest,ChangeOverlay,
-                queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl
+                cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,addCategory,openOverlay,testData,
+                SelectCurrency, QuantityOfProducts,testType,secondTest,ChangeOverlay,
+                AddProductInCart,queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,ChangeProductInCart
             }}>
                 {this.props.children}
             </CartContext.Provider>
