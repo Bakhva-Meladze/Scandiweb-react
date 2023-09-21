@@ -12,26 +12,19 @@ class AddProductInCart extends Component {
           productSum:[],
           currencyKey: localStorage.getItem("currencyKey") ? localStorage.getItem("currencyKey") : 0,
           productsPrices: []
-
-
       }
-      console.log(this.state.cachedData);
-
-
-
   }
   testData =(data,array) =>{
-      console.log(data);
+      console.log(array);
       this.setState({
           currencyKey: data,
           productsPrices: array
       })
   }
   componentDidMount() {
-      console.log(this.state.cachedData);
       let arr =[];
       this.state.cachedData?.map((value, key) => {
-           arr.push(value.prices[this.state.currencyKey].amount);
+           arr.push(value.prices[this.state.currencyKey]);
 
       });
       this.setState({
@@ -117,7 +110,8 @@ class AddProductInCart extends Component {
                      listOfCartProducts[key].length++;
 
                      this.setState({
-                         listOfCartProducts: listOfCartProducts
+                         listOfCartProducts: listOfCartProducts,
+                         cachedData: Object
                      });
                  }
 
@@ -142,18 +136,20 @@ class AddProductInCart extends Component {
                  cachedData: [Object]
              })
          }
+         console.log(this.state.cachedData);
+
      }
     render() {
         const {queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl} = this.context;
-        const{cachedData,listOfCartProducts,currencyKey} = this.state;
+        const{cachedData,listOfCartProducts,currencyKey,productsPrices} = this.state;
         const {AddProductInCart,ChangeProductInCart,testData} =this;
 
         return (
             <CartContext.Provider value={{
-                queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,cachedData,listOfCartProducts,
+                queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,
+                cachedData,listOfCartProducts,productsPrices,currencyKey,
                 AddProductInCart,ChangeProductInCart,testData}}>
                 {this.props.children}
-                {<CartProvider data={this.state.cachedData}/>}
             </CartContext.Provider>
         );
     }
