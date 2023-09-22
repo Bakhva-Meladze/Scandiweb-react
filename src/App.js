@@ -11,18 +11,20 @@ import CartProvider from "./Components/cart/CartProvider";
 import Queres from "./querys/Queres";
 import FetchData from "./FetchData";
 import * as PropTypes from "prop-types";
+import AddProductInCart from "./Components/cart/AddProductInCart";
+
+
 
 class App extends React.Component {
     render() {
-        console.log("hii");
         return (
-            <div className="App">
-
-                <Queres>
-                        <CartProvider>
-                            <BrowserRouter>
-                                <Header />
-                                <Switch>
+                <div className="App">
+                    <Queres>
+                        <AddProductInCart>
+                            <CartProvider>
+                                <BrowserRouter>
+                                    <Header />
+                                    <Switch>
                                         <Route path="/category/:item">
                                             <CategoryPage />
                                         </Route>
@@ -33,21 +35,11 @@ class App extends React.Component {
                                             <Cart/>
                                         </Route>
                                     </Switch>
-                                    {/*<Route path="/category/:items">
-                                    <CategoryPage>
-                                        <ProductCard/>
-                                    </CategoryPage>
-                                </Route>
-                                <Route path="/Product/:id">
-                                    <ProductPage/>
-                                </Route>
-                                <Route path="/Cart">
-                                    <Cart/>
-                                </Route>*/}
-                            </BrowserRouter>
-                        </CartProvider>
-                </Queres>
-            </div>
+                                </BrowserRouter>
+                            </CartProvider>
+                        </AddProductInCart>
+                    </Queres>
+                </div>
         )
     }
 }
