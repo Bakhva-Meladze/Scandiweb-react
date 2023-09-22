@@ -22,7 +22,7 @@ class Summary extends React.Component {
                 <div className="overflow-tax">
                     {"Total:"}
                     <span className="currency">
-                        {this.props.pricesAttributes[this.props.currencyKey].currency.symbol}
+                        {this.props.symbol[0]?.currency.symbol}
                         {this.sumPrices()}
                     </span>
                 </div>
