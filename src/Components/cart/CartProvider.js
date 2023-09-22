@@ -133,21 +133,29 @@ class CartProvider extends Component {
     SelectCurrency = (data = 0) => {
         let array = [];
          this.context.cachedData?.map((value, key) => (
-            array.push(this.context.cachedData[key].prices[data])
-        ));
+
+        array.push(value.prices[data])
+
+    ));
+        /*this.setState(prevState => ({
+            productsPrices: [...prevState.productsPrices,prices[this.state.currencyKey]]
+
+        }));*/
+         console.log(array);
+         console.log(data);
         localStorage.setItem("currencyKey", JSON.stringify(data));
         this.setState({
             currencyKey: data,
-            productsPrices: array
+            productsPrices: array[data]
         });
-         this.context.testData(data,array);
+         this.context.SelectChangeCurrency(data,array);
     }
 
     QuantityOfProducts = () => {
         let sumResult = 0;
-        this.context.cachedData?.map((value) => (
+        this.context.cachedData?this.context.cachedData.map((value) => (
             sumResult += value.length
-        ));
+        )):sumResult =0;
 
         return sumResult;
     }
