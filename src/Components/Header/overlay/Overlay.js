@@ -44,7 +44,7 @@ class Overlay extends React.Component {
                                         :
                                         <span>CART</span>
                                     </div>
-                                    {cachedData.map((product,index)=>(
+                                    {cachedData?.map((product,index)=>(
                                         <div key={index} className="container-overflow-item">
                                             <Items
                                                 chooseItemID={product.chooseItemID}
@@ -68,7 +68,7 @@ class Overlay extends React.Component {
                                         </div>
                                     ))}
                                     <Summary
-                                        pricesAttributes={productsPrices}
+                                        symbol={productsPrices}
                                         currencyKey={currencyKey}
                                         prices={cachedData?.map((value, key) => value.length * productsPrices[key].amount)}
                                         QuantityOfProducts={QuantityOfProducts()}
