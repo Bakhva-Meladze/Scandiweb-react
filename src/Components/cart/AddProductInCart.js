@@ -34,7 +34,7 @@ class AddProductInCart extends Component {
 
 
 
-     ChangeProductInCart = (type, key) => {
+    /* ChangeProductInCart = (type, key) => {
          let Object = this.state.cachedData;
 
          if (type === "increase") {
@@ -66,7 +66,7 @@ class AddProductInCart extends Component {
          this.setState({
              cachedData: JSON.parse(localStorage.getItem('cartProducts')),
          })
-/*
+/!*
          if (type === "decrease" && this.state.listOfCartProducts[key].length - 1 === 0) {
              this.state.listOfCartProducts.splice(key, 1);
              return;
@@ -77,8 +77,8 @@ class AddProductInCart extends Component {
 
          this.setState({
              listOfCartProducts: listOfCartProducts
-         });*/
-     }
+         });*!/
+     }*/
 
      AddProductInCart = (id, choseItemID, gallery,prices,items,brand,name,length = 1) => {
          const Object = {
@@ -140,13 +140,13 @@ class AddProductInCart extends Component {
     render() {
         const {queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl} = this.context;
         const{cachedData,listOfCartProducts,currencyKey,productsPrices} = this.state;
-        const {AddProductInCart,ChangeProductInCart,SelectChangeCurrency} =this;
+        const {AddProductInCart,SelectChangeCurrency} =this;
 
         return (
             <CartContext.Provider value={{
                 queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,
                 cachedData,listOfCartProducts,productsPrices,currencyKey,
-                AddProductInCart,ChangeProductInCart,SelectChangeCurrency}}>
+                AddProductInCart,SelectChangeCurrency}}>
                 {this.props.children}
             </CartContext.Provider>
         );
