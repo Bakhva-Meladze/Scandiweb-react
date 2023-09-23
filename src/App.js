@@ -12,6 +12,7 @@ import Queres from "./querys/Queres";
 import FetchData from "./FetchData";
 import * as PropTypes from "prop-types";
 import AddProductInCart from "./Components/cart/AddProductInCart";
+import ChangeProductInCart from "./Components/cart/ChangeProductInCart";
 
 
 
@@ -21,22 +22,24 @@ class App extends React.Component {
                 <div className="App">
                     <Queres>
                         <AddProductInCart>
-                            <CartProvider>
-                                <BrowserRouter>
-                                    <Header />
-                                    <Switch>
-                                        <Route path="/category/:item">
-                                            <CategoryPage />
-                                        </Route>
-                                        <Route path="/product/:productId">
-                                            <ProductPage />
-                                        </Route>
-                                        <Route path="/Cart">
-                                            <Cart/>
-                                        </Route>
-                                    </Switch>
-                                </BrowserRouter>
-                            </CartProvider>
+                            <ChangeProductInCart>
+                                <CartProvider>
+                                    <BrowserRouter>
+                                        <Header />
+                                        <Switch>
+                                            <Route path="/category/:item">
+                                                <CategoryPage />
+                                            </Route>
+                                            <Route path="/product/:productId">
+                                                <ProductPage />
+                                            </Route>
+                                            <Route path="/Cart">
+                                                <Cart/>
+                                            </Route>
+                                        </Switch>
+                                    </BrowserRouter>
+                                </CartProvider>
+                            </ChangeProductInCart>
                         </AddProductInCart>
                     </Queres>
                 </div>
