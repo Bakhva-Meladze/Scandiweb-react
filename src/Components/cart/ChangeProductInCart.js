@@ -36,8 +36,7 @@ class  ChangeProductInCart extends React.Component {
             console.log(Object);
 
             Object.splice(key, 1);
-            this.state.cachedData.length > 0 ? localStorage.setItem("cartProducts", JSON.stringify(Object))
-                : localStorage.removeItem("cartProducts");
+            localStorage.removeItem("cartProducts");
         }
 
         this.setState({
