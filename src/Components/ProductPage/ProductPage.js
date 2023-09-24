@@ -69,7 +69,7 @@ class ProductPage extends React.Component {
         }
         return (
             <CartContext.Consumer>
-                {({AddProductInCart, currencyKey}) => (
+                {({AddProductInCart, currencyKey,productCategory}) => (
                     <div className="main-product">
                         {this.state.filter?<Loading />:null}
 
@@ -90,7 +90,17 @@ class ProductPage extends React.Component {
                                 <button
                                     className="button"
                                     onClick={() =>
-                                        AddProductInCart(this.state.id, this.state.choseItemId)}>
+                                        AddProductInCart(
+                                        this.state.products.id,
+                                        this.state.products.attributes[0]?.items[0]?.id,
+                                        this.state.products.gallery,
+                                        this.state.products.prices,
+                                        this.state.products.attributes[0]?.items,
+                                        this.state.products.brand,
+                                        this.state.products.name,
+                                        )
+
+                                }>
                                     Add Cart
                                 </button>
                                 {parse(this.state.products.description ? this.state.products.description : "")}
