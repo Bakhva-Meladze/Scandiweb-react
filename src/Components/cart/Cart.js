@@ -14,7 +14,7 @@ class Cart extends React.Component {
                     <div>
                         <div>
                             <div className= "cart">
-                                {listOfCartProducts?.map((product, index) => (
+                                {cachedData?.map((product, index) => (
                                     <div className={`${openOverlay? "container-overflow-item" : "container-item"}`}
                                         key={index}>
                                         <Items
@@ -23,7 +23,7 @@ class Cart extends React.Component {
                                             brand={product.brand}
                                             name={product.name}
                                             currency={product.prices}
-                                            productAttributes={product.attributes}
+                                            productAttributes={product.items}
                                             currencyKey={currencyKey}
                                         />
                                         <div
