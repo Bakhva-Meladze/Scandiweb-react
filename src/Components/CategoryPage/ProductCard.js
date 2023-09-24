@@ -41,8 +41,6 @@ class ProductCard extends React.Component {
                                  this.props.productCategory.attributes[0]?.items,
                                  this.props.productCategory.brand,
                                  this.props.productCategory.name,
-
-
                              )}
                          src={cartIcon} alt="Cart"/>
                 </div>
