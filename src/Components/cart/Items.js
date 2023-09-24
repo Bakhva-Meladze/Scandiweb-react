@@ -20,10 +20,12 @@ class Items extends React.Component {
                 <div className="attribute">
                     <span
                         className="size">
-                        {this.props.productAttributes[0]?.id ? this.props.productAttributes[0]?.id + ":" : ''}
+{/*
+                        {this.props.productAttributes.id ? this.props.productAttributes.id + ":" : ''}
+*/}
                     </span>
                     <div className="items">
-                        {this.props.productAttributes[0]?.items.map((item, key) => (
+                        {this.props.productAttributes.map((item, key) => (
                             <div className={this.props.chooseItemID === item.id ? "item color" : "item"}
                                  key={item.id}>
                                    <span
