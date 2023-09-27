@@ -5,13 +5,12 @@ class AddProductInCart extends Component {
   constructor(props) {
       super(props);
       this.state = {
-          cachedData: localStorage.getItem('cartProducts')
-              ? JSON.parse(localStorage.getItem('cartProducts'))
+          cachedData: localStorage.getItem('cartProducts') ? JSON.parse(localStorage.getItem('cartProducts'))
               : null,
           listOfCartProducts: [],
           productSum:[],
           currencyKey: localStorage.getItem("currencyKey") ? localStorage.getItem("currencyKey") : 0,
-          productsPrices: []
+          productsPrices: [],
       }
   }
   SelectChangeCurrency =(data,array) =>{
@@ -32,54 +31,6 @@ class AddProductInCart extends Component {
 
   }
 
-
-
-    /* ChangeProductInCart = (type, key) => {
-         let Object = this.state.cachedData;
-
-         if (type === "increase") {
-             let cachedData = this.state.cachedData;
-             cachedData[key].length++;
-             this.setState({
-                 cachedData: cachedData
-             })
-             localStorage.setItem("cartProducts", JSON.stringify(Object));
-         }
-
-         if (type === "decrease") {
-             let cachedData = this.state.cachedData;
-             cachedData[key].length--;
-             this.setState({
-                 cachedData: cachedData
-             })
-
-             localStorage.setItem("cartProducts", JSON.stringify(Object));
-         }
-
-         if (this.state.cachedData[key].length === 0) {
-             Object.splice(key, 1);
-             this.state.cachedData.length > 0
-                 ? localStorage.setItem("cartProducts", JSON.stringify(Object))
-                 : localStorage.removeItem("cartProducts");
-         }
-
-         this.setState({
-             cachedData: JSON.parse(localStorage.getItem('cartProducts')),
-         })
-/!*
-         if (type === "decrease" && this.state.listOfCartProducts[key].length - 1 === 0) {
-             this.state.listOfCartProducts.splice(key, 1);
-             return;
-         }
-
-         let listOfCartProducts = this.state.listOfCartProducts;
-         listOfCartProducts[key].length += type === "increase" ? 1 : -1;
-
-         this.setState({
-             listOfCartProducts: listOfCartProducts
-         });*!/
-     }*/
-
      AddProductInCart = (id, choseItemID, gallery,prices,items,brand,name,length = 1) => {
          const Object = {
              id: id,
@@ -92,9 +43,9 @@ class AddProductInCart extends Component {
              name: name
          }
          this.setState(prevState => ({
-             productsPrices: [...prevState.productsPrices,prices[this.state.currencyKey]]
-
+             productsPrices: [...prevState.productsPrices,prices[this.state.currencyKey]],
          }));
+         console.log(choseItemID);
          if (JSON.parse(localStorage.getItem("cartProducts"))) {
              let filter = 0;
              let add = JSON.parse(localStorage.getItem("cartProducts"));
@@ -134,7 +85,6 @@ class AddProductInCart extends Component {
                  cachedData: [Object]
              })
          }
-         console.log(this.state.cachedData);
 
      }
     render() {
