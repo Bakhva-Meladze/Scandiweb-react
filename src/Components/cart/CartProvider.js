@@ -159,53 +159,6 @@ class CartProvider extends Component {
 
         return sumResult;
     }
-
-    /*ChangeProductInCart = (type, key) => {
-        let Object = this.state.cachedData;
-
-        if (type === "increase") {
-            let cachedData = this.state.cachedData;
-            cachedData[key].length++;
-            this.setState({
-                cachedData: cachedData
-            })
-            localStorage.setItem("cartProducts", JSON.stringify(Object));
-        }
-
-        if (type === "decrease") {
-            let cachedData = this.state.cachedData;
-            cachedData[key].length--;
-            this.setState({
-                cachedData: cachedData
-            })
-
-            localStorage.setItem("cartProducts", JSON.stringify(Object));
-        }
-
-        if (this.state.cachedData[key].length === 0) {
-            Object.splice(key, 1);
-            this.state.cachedData.length > 0
-                ? localStorage.setItem("cartProducts", JSON.stringify(Object))
-                : localStorage.removeItem("cartProducts");
-        }
-
-        this.setState({
-            cachedData: JSON.parse(localStorage.getItem('cartProducts')),
-        })
-
-        if (type === "decrease" && this.state.listOfCartProducts[key].length - 1 === 0) {
-            this.state.listOfCartProducts.splice(key, 1);
-
-            return;
-        }
-
-        let listOfCartProducts = this.state.listOfCartProducts;
-        listOfCartProducts[key].length += type === "increase" ? 1 : -1;
-
-        this.setState({
-            listOfCartProducts: listOfCartProducts
-        });
-    }*/
     testType =(data) =>{
 
 
@@ -228,7 +181,7 @@ class CartProvider extends Component {
         return (
             <CartContext.Provider value={{
                 cachedData, listOfCartProducts, productsPrices, pricesAttributes, currencyKey,addCategory,openOverlay,testData,
-                SelectCurrency, QuantityOfProducts,testType,secondTest,ChangeOverlay,
+                SelectCurrency,QuantityOfProducts,testType,secondTest,ChangeOverlay,
                 AddProductInCart,queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,ChangeProductInCart
             }}>
                 {this.props.children}
