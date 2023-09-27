@@ -8,7 +8,6 @@ class  ChangeProductInCart extends React.Component {
 
     constructor(props) {
         super(props);
-
     }
     ChangeProductInCart = (type, key) => {
         let Object = this.context.cachedData;
@@ -46,8 +45,6 @@ class  ChangeProductInCart extends React.Component {
 
 
     render() {
-        console.log(this.context.cachedData);
-
         const {
                queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,
                AddProductInCart,SelectChangeCurrency,
