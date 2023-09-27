@@ -25,8 +25,8 @@ class Overlay extends React.Component {
     render() {
         return (
             <CartContext.Consumer>
-                {({QuantityOfProducts,listOfCartProducts,currencyKey,
-                      ChangeProductInCart,pricesAttributes,cachedData,productsPrices}) => (
+                {({QuantityOfProducts,currencyKey,
+                      ChangeProductInCart,cachedData,productsPrices}) => (
                     <div>
                         <div className="basket-container"
                              onClick={() => this.OpenCart()}>
@@ -47,7 +47,7 @@ class Overlay extends React.Component {
                                     {cachedData?.map((product,index)=>(
                                         <div key={index} className="container-overflow-item">
                                             <Items
-                                                chooseItemID={product.chooseItemID}
+                                                chooseItemID={product.choseItemID}
                                                 brand={product.brand}
                                                 name={product.name}
                                                 currency={product.prices}
