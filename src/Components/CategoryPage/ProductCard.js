@@ -10,10 +10,7 @@ class ProductCard extends React.Component {
     }
 
     ProductPage() {
-
         window.location.pathname = "/product/" + this.props.productCategory.id;
-
-
 
     }
 

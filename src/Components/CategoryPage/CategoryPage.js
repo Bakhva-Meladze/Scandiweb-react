@@ -15,7 +15,7 @@ class CategoryPage extends React.Component {
             productsCategory: [],
             currencySymbols: '',
             states: null,
-            add: "all"/*window.location.pathname.slice(10, window.location.href.length)*/,
+            add: "all",
             filter: true
         }
 
