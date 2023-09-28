@@ -2,8 +2,6 @@ import React from "react";
 import url from "../../url.js";
 import CartContext from "../cart/CartContext";
 import ProductCard from "./ProductCard";
-import cartContext from "../cart/CartContext";
-import { Link } from 'react-router-dom';
 import Loading from "../../Loading";
 
 
