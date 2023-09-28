@@ -45,27 +45,21 @@ class AddProductInCart extends Component {
          this.setState(prevState => ({
              productsPrices: [...prevState.productsPrices,prices[this.state.currencyKey]],
          }));
-         console.log(choseItemID);
          if (JSON.parse(localStorage.getItem("cartProducts"))) {
              let filter = 0;
              let add = JSON.parse(localStorage.getItem("cartProducts"));
-
-
              add.forEach((value, key) => {
                  if (id === add[key].id && choseItemID === add[key].choseItemID) {
-                     localStorage.setItem("cartProducts", JSON.stringify(add[key].length++));
-                     let listOfCartProducts = this.state.listOfCartProducts;
+                     add[key].length++;
+                     console.log(add);
                      filter++;
-                     listOfCartProducts[key].length++;
-
                      this.setState({
-                         listOfCartProducts: listOfCartProducts,
-                         cachedData: Object
+                         cachedData: add
                      });
                  }
 
                  if (filter === 0 && add.length === key + 1) {
-                     if (id !== add[key].id || choseItemID !== add[key].choseItem) {
+                     if (id !== add[key].id || choseItemID !== add[key].choseItemID) {
                          add.push(Object);
                      }
                  }
@@ -74,7 +68,6 @@ class AddProductInCart extends Component {
                      add.push(Object);
                  }
              })
-
              localStorage.setItem("cartProducts", JSON.stringify(add));
              this.setState({
                  cachedData: add
