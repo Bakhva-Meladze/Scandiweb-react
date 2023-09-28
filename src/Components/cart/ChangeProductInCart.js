@@ -48,13 +48,13 @@ class  ChangeProductInCart extends React.Component {
         const {
                queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,
                AddProductInCart,SelectChangeCurrency,
-               cachedData,listOfCartProducts,currencyKey,productsPrices} = this.context;
+               cachedData,currencyKey,productsPrices} = this.context;
         const {ChangeProductInCart} =this;
 
         return(
             <CartContext.Provider value={{
                 queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,
-                cachedData,listOfCartProducts,productsPrices,currencyKey,
+                cachedData,productsPrices,currencyKey,
                 AddProductInCart,SelectChangeCurrency,ChangeProductInCart}}>
                 {this.props.children}
             </CartContext.Provider>
