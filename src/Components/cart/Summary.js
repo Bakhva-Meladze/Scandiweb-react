@@ -31,19 +31,19 @@ class Summary extends React.Component {
                 <div className="tax">
                     <span className="all-items">Tax 21%:</span>
                     <span className="currency">
-                        {this.props.pricesAttributes[this.props.currencyKey]?.currency.symbol}
                         {this.parcentOfSumPraces()}
+                        {" "+this.props.pricesAttributes}
                     </span>
                 </div>
                 <div className="quantity">
                     <span>Quantity:</span>
                     <span className="currency">{this.props.QuantityOfProducts}</span>
                 </div>
-                <div className={`${this.props.dataFromHeader ? "overflow-tax" : "total"}`}>
+                <div className="total">
                     {"Total:"}
                     <span className="currency">
-                        {this.props.pricesAttributes[this.props.currencyKey]?.currency.symbol}
                         {this.sumPrices()}
+                        {" "+this.props.pricesAttributes}
                     </span>
                 </div>
                 <button className="button" onClick={() => this.deleteLocalStorage()}><span>ORDER</span></button>
