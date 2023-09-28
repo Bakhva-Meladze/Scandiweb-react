@@ -44,7 +44,7 @@ class Cart extends React.Component {
                                 ))}
                                 <Summary
                                     dataFromHeader={openOverlay}
-                                    pricesAttributes={pricesAttributes}
+                                    pricesAttributes={productsPrices[0]?.currency.symbol}
                                     currencyKey={currencyKey}
                                     prices={cachedData?.map((value, key) => value.length * productsPrices[key]?.amount)}
                                     QuantityOfProducts={QuantityOfProducts()}
