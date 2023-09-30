@@ -5,20 +5,13 @@ import { NavLink } from "react-router-dom";
 class Category extends React.Component {
     constructor(props) {
         super(props);
-        this.addressRouter = this.addressRouter.bind(this);
     }
-
-    addressRouter(category) {
-        this.props.testType(category);
-
-    }
-
     render() {
         return (
             <div className="navigation">
                 {this.props.categories.map((value, key) => (
                     <label key={key} className="btn">
-                        <NavLink className="btns" onClick={() => this.props.testType(this.props.categories[key].name)}
+                        <NavLink className="btns" onClick={() => this.props.selectCategoryType(this.props.categories[key].name)}
                                  key={this.props.categories[key].name} to={"/category/" + this.props.categories[key].name}>
                             {this.props.categories[key].name}
                         </NavLink>
