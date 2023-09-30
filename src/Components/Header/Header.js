@@ -50,14 +50,12 @@ class Header extends React.Component {
                 </div>
             )
         }
-        console.log("hi");
         return (
             <CartContext.Consumer>
-                {({SelectCurrency, QuantityOfProducts, currencyKey,testType}) => (
+                {({SelectCurrency, currencyKey,selectCategoryType}) => (
                     <div className="header">
                         {this.state.filter?<Loading />:''}
-
-                        <Category  categories={this.state.categories} testType ={testType}/>
+                        <Category  categories={this.state.categories} selectCategoryType={selectCategoryType}/>
                         <div className="logo"><img src={iconBox} alt="logo"/></div>
                         <div className="right">
                             <Currency SelectCurrency={SelectCurrency}
