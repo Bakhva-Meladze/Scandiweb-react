@@ -5,6 +5,9 @@ import {Link} from "react-router-dom";
 class ProductCard extends React.Component {
     constructor(props) {
         super(props);
+        this.state ={
+            inStock: this.props.productCategory.inStock
+        }
 
         this.ProductPage = this.ProductPage.bind(this);
     }
@@ -17,8 +20,8 @@ class ProductCard extends React.Component {
     render() {
         return (
             <div className="product-card">
-                <span style={{display: this.props.productCategory.inStock === true ? "none" : "block"}}
-                      className={`${this.props.productCategory.inStock === true ? "" : "value-stock"}`}>
+                <span style={{display: this.state.inStock === true ? "none" : "block"}}
+                      className={`${this.state.inStock === true ? "" : "value-stock"}`}>
                     {"OUT OF THE STOCK"}
                 </span>
                 <Link to={`/product/${this.props.productCategory.id}`} >
@@ -27,25 +30,30 @@ class ProductCard extends React.Component {
                          alt="Product"
                     />
                 </Link>
-                <div className="basket-img">
-                    <img className="img-value"
-                         onClick={() => !this.props.productCategory.inStock ? ""
-                             : this.props.AddProductInCart(
-                                 this.props.productCategory.id,
-                                 this.props.productCategory.attributes[0]?.items[0]?.id,
-                                 this.props.productCategory.gallery,
-                                 this.props.productCategory.prices,
-                                 this.props.productCategory.attributes[0]?.items,
-                                 this.props.productCategory.brand,
-                                 this.props.productCategory.name,
-                             )}
-                         src={cartIcon} alt="Cart"/>
-                </div>
-                <div className="name"><span>{this.props.productCategory.name}</span>
-                    <div className='currency'>
-                        {this.props.productCategory.prices[this.props.currencyKey]?.currency.symbol}
-                        {this.props.productCategory.prices[this.props.currencyKey]?.amount}
+                <div className="container-data">
+                    <div className="name"><span>{this.props.productCategory.name}</span>
+                        <div className='currency'>
+                            {this.props.productCategory.prices[this.props.currencyKey]?.currency.symbol}
+                            {this.props.productCategory.prices[this.props.currencyKey]?.amount}
+                        </div>
                     </div>
+                    {this.state.inStock?
+                        <div className="basket-img">
+                            <img className="img-value"
+                                 onClick={() => !this.props.productCategory.inStock ? ""
+                                     : this.props.AddProductInCart(
+                                         this.props.productCategory.id,
+                                         this.props.productCategory.attributes[0]?.items[0]?.id,
+                                         this.props.productCategory.gallery,
+                                         this.props.productCategory.prices,
+                                         this.props.productCategory.attributes[0]?.items,
+                                         this.props.productCategory.brand,
+                                         this.props.productCategory.name,
+                                     )}
+                                 src={cartIcon} alt="Cart"/>
+                        </div>:""
+                    }
+
                 </div>
             </div>
         )
