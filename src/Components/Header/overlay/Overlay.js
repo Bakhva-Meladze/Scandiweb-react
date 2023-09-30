@@ -6,38 +6,67 @@ import ChangeQuantity from "./ChangeQuantity";
 import ImageSlider from "./ImageSlider";
 import Summary from "./Summary";
 import OverlayButtons from "./OverlayButtons";
-
 class Overlay extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
             showCartOverlay: false,
         }
-        this.OpenCart = this.OpenCart.bind(this);
     }
 
-    OpenCart() {
-        this.setState({
-            showCartOverlay: !this.state.showCartOverlay
-        })
+    OpenCart=(event,element)=>{
+        if(element === "basket"){
+            alert("overlay");
+            this.setState({
+                showCartOverlay: true
+
+            })
+        }
+
+        if(element === "overlay"){
+            alert("overlay");
+            this.setState({
+                showCartOverlay: false
+
+            })
+        }
+
+        if( event.target.className === "overflow-button-checkout" && element ==="checkout"){
+            alert("checkout");
+            this.setState({
+                showCartOverlay: false
+
+            })
+        }
+        if(event.target.className ==="cart-overlay" && element === "cart-overlay"){
+            alert("cart-overlay");
+            this.setState({
+                showCartOverlay: true
+
+            })
+
+        }
     }
 
     render() {
         return (
             <CartContext.Consumer>
-                {({QuantityOfProducts,currencyKey,
-                      ChangeProductInCart,cachedData,productsPrices}) => (
+                {({QuantityOfProducts,currencyKey,ChangeProductInCart,cachedData,productsPrices}) => (
                     <div>
                         <div className="basket-container"
-                             onClick={() => this.OpenCart()}>
+                             onClick={(event)=>this.OpenCart(event, "basket")}>
                             <img className="basket" src={icon} alt={"basket"}/>
                             <div className="circle">
                                 <span className="circle-value">{QuantityOfProducts()}</span>
                             </div>
                         </div>
                         {this.state.showCartOverlay && (
-                            <div className="overlay">
-                                <div className="cart-overlay">
+                            <div>
+                                <div className="overlay"
+                                     onClick={(event)=>this.OpenCart(event,"overlay")}></div>
+                                <div className="cart-overlay"
+                                     onClick={(event) => this.OpenCart(event,"cart-overlay")}>
                                     <div className="title">
                                         <span className="brand">{"My Bag  ,"}</span>
                                         <span className="items">{QuantityOfProducts()} items</span>
@@ -60,7 +89,7 @@ class Overlay extends React.Component {
                                                     productQuantity={product.length}
                                                     index={index}
                                                 />
-                                               <ImageSlider
+                                                <ImageSlider
                                                     images={product.gallery}
                                                     myKey={index}
                                                 />
@@ -70,10 +99,10 @@ class Overlay extends React.Component {
                                     <Summary
                                         symbol={productsPrices}
                                         currencyKey={currencyKey}
-                                        prices={cachedData?.map((value, key) => value.length * productsPrices[key].amount)}
+                                        prices={cachedData?.map((value, key) => value.length * productsPrices[key]?.amount)}
                                         QuantityOfProducts={QuantityOfProducts()}
                                     />
-                                    <OverlayButtons cart={this.OpenCart} />
+                                    <OverlayButtons close={this.OpenCart} />
                                 </div>
                             </div>
                         )}
