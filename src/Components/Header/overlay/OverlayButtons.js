@@ -14,7 +14,7 @@ class OverlayButtons extends React.Component {
                 </button>
                 </Link>
                 <button className="overflow-button-checkout"
-                        onClick={(event) => this.props.close(event,"checkout")}>
+                        onClick={() => this.props.close()}>
                     CHECK OUT
                 </button>
             </div>
