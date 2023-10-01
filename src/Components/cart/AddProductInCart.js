@@ -31,7 +31,7 @@ class AddProductInCart extends Component {
 
   }
 
-     AddProductInCart = (id, choseItemID, gallery,prices,items,brand,name,length = 1) => {
+     AddProductInCart = (id, choseItemID, gallery,prices,items,brand,name,length = 1) => { // (product, chooseItemId = null)
          const Object = {
              id: id,
              choseItemID: choseItemID,

@@ -1,6 +1,7 @@
 import React from "react";
 import CartContext from "./CartContext";
 import AddProductInCart from "./AddProductInCart";
+import {object} from "prop-types";
 
 
 
@@ -12,7 +13,23 @@ class  ChangeProductInCart extends React.Component {
     ChangeProductInCart = (type, key) => {
         let Object = this.context.cachedData;
 
-        if (type === "increase") {
+        let cachedData = this.context.cachedData;
+        cachedData[key].length += (type === "increase" ? 1 : -1);
+
+        if (this.context.cachedData[key].length === 0) {
+            console.log(Object);
+
+            Object.splice(key, 1);
+            localStorage.setItem("cartProducts", JSON.stringify(Object));
+            // localStorage.removeItem("cartProducts");
+        }
+
+        this.setState({
+            cachedData: cachedData
+        })
+        localStorage.setItem("cartProducts", JSON.stringify(Object.length < 1 ? null : Object));
+
+      /*  if (type === "increase") {
             let cachedData = this.context.cachedData;
             cachedData[key].length++;
             this.setState({
@@ -29,19 +46,22 @@ class  ChangeProductInCart extends React.Component {
             })
 
             localStorage.setItem("cartProducts", JSON.stringify(Object));
-        }
+        }*/
 
-        if (this.context.cachedData[key].length === 0) {
+/*        if (this.context.cachedData[key].length === 0) {
             console.log(Object);
 
             Object.splice(key, 1);
-            localStorage.removeItem("cartProducts");
-        }
+            localStorage.setItem("cartProducts", JSON.stringify(Object));
+            // localStorage.removeItem("cartProducts");
+        }*/
 
-        this.setState({
-            cachedData: JSON.parse(localStorage.getItem('cartProducts')),
-        })
+        // this.setState({
+        //     cachedData: JSON.parse(localStorage.getItem('cartProducts')),
+        // })
     }
+
+
 
 
     render() {
