@@ -83,6 +83,8 @@
             flex-wrap: wrap;
             align-content: center;
             justify-content: space-around;
+            cursor: pointer;
+
 
             .basket {
                 width: 20px;
@@ -90,6 +92,7 @@
                 margin-left: 22px;
                 margin-top: 11.17px;
                 margin-bottom: 15.8px;
+
             }
         }
 
@@ -119,215 +122,218 @@
             width: 100%;
             background: rgba(57, 55, 72, 0.2);
 
-            .cart-overlay {
-                width: 325px;
-                display: flex;
-                text-align: left;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                position: absolute;
-                right: 70px;
-                background: $white;
+        }
+        .cart-overlay {
+            width: 325px;
+            display: flex;
+            text-align: left;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            position: absolute;
+            right: 70px;
+            background: $white;
+            z-index: 2;
 
-                .title {
+
+            .title {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                margin-left: 16px;
+            }
+
+            .container-overflow-item {
+                margin-right: 16px;
+                padding-left: 16px;
+                margin-top: 32px;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: flex-end;
+                flex-direction: row;
+
+                .content-overlay {
+                    width: 136px;
+
+                    .brand-overlay {
+                        font-family: $font-family-raleway;
+                        font-weight: 300;
+                        Line-height: 25px;
+                        font-size: $font-size-small;
+                        color: $black;
+                    }
+
+                    .name-overlay {
+                        font-family: $font-family-raleway;
+                        font-weight: 300;
+                        font-size: $font-size-small;
+                        line-height: 25px;
+                        color: $black;
+                    }
+
+                    .currency-overlay {
+                        font-family: $font-family-raleway;
+                        width: 52px;
+                        font-size: $font-size-small;
+                        line-height: 25px;
+                        font-weight: 500;
+                    }
+
+                    .attribute-overlay {
+                        .size-overlay {
+                            display: flex;
+                            margin-bottom: 8px;
+                        }
+
+                        .items-overlay {
+                            font-family: $font-family-raleway;
+                            font-weight: 300;
+                            font-size: $font-size-small;
+                            line-height: 25px;
+                            color: $black;
+                            display: flex;
+                            justify-content: flex-start;
+                            flex-wrap: nowrap;
+
+                            .item-overlay {
+                                font-family: serif;
+                                width: 24px;
+                                height: 24px;
+                                font-weight: 25;
+                                border: 1px solid $black;
+                                text-align: center;
+                                margin-right: 8px;
+                            }
+
+                            .color {
+                                background-color: black;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+
+                .content-right-overflow {
                     display: flex;
+                    flex-direction: row;
                     flex-wrap: nowrap;
                     justify-content: flex-start;
-                    margin-left: 16px;
+
+                    .quantity-switcher-overflow {
+                        .sum-overflow {
+                            display: flex;
+                            flex-direction: column;
+                            flex-wrap: wrap;
+                            margin-right: 8px;
+                            margin-left: 10px;
+                            height: 190px;
+                            justify-content: space-between;
+
+                            .sum-button {
+                                border: 1px solid black;
+                                width: 24px;
+                                text-align: center;
+                                padding-top: 4px;
+                                padding-bottom: 4px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    .imgs-overflow {
+                        .img-overflow {
+                            height: 190px;
+                            width: 121px;
+                        }
+
+                        .container-of-arrow-img-overflow {
+                            display: flex;
+                            justify-content: space-evenly;
+                            flex-direction: row;
+                            margin-left: 57px;
+
+                            .show-arrow {
+                                background-color: black;
+                                text-align: center;
+                                font-size: $font-size-xxs;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .foot {
+                .tax {
+                    display:none;
                 }
 
-                .container-overflow-item {
-                    margin-right: 16px;
-                    padding-left: 16px;
-                    margin-top: 32px;
-                    display: flex;
+                .quantity {
+                    display: none;
+                }
+
+                .button {
+                    display: none;
+                }
+
+                .overflow-tax {
                     flex-wrap: nowrap;
-                    justify-content: flex-end;
-                    flex-direction: row;
+                    justify-content: space-between;
+                    margin-bottom: 45px;
+                    font-family: $font-family-roboto;
+                    font-weight: 500;
+                    font-size: $font-size-small;
+                    margin-left:10px;
+                    line-height: 18px;
+                    margin-top: 30px;
+                    color: $black;
+                    height: 19px;
 
-                    .content-overlay {
-                        width: 136px;
-
-                        .brand-overlay {
-                            font-family: $font-family-raleway;
-                            font-weight: 300;
-                            Line-height: 25px;
-                            font-size: $font-size-small;
-                            color: $black;
-                        }
-
-                        .name-overlay {
-                            font-family: $font-family-raleway;
-                            font-weight: 300;
-                            font-size: $font-size-small;
-                            line-height: 25px;
-                            color: $black;
-                        }
-
-                        .currency-overlay {
-                            font-family: $font-family-raleway;
-                            width: 52px;
-                            font-size: $font-size-small;
-                            line-height: 25px;
-                            font-weight: 500;
-                        }
-
-                        .attribute-overlay {
-                            .size-overlay {
-                                display: flex;
-                                margin-bottom: 8px;
-                            }
-
-                            .items-overlay {
-                                font-family: $font-family-raleway;
-                                font-weight: 300;
-                                font-size: $font-size-small;
-                                line-height: 25px;
-                                color: $black;
-                                display: flex;
-                                justify-content: flex-start;
-                                flex-wrap: nowrap;
-
-                                .item-overlay {
-                                    font-family: serif;
-                                    width: 24px;
-                                    height: 24px;
-                                    font-weight: 25;
-                                    border: 1px solid $black;
-                                    text-align: center;
-                                    margin-right: 8px;
-                                }
-
-                                .color {
-                                    background-color: black;
-                                    color: white;
-                                }
-                            }
-                        }
-                    }
-
-                    .content-right-overflow {
-                        display: flex;
-                        flex-direction: row;
-                        flex-wrap: nowrap;
-                        justify-content: flex-start;
-
-                        .quantity-switcher-overflow {
-                            .sum-overflow {
-                                display: flex;
-                                flex-direction: column;
-                                flex-wrap: wrap;
-                                margin-right: 8px;
-                                margin-left: 10px;
-                                height: 190px;
-                                justify-content: space-between;
-
-                                .sum-button {
-                                    border: 1px solid black;
-                                    width: 24px;
-                                    text-align: center;
-                                    padding-top: 4px;
-                                    padding-bottom: 4px;
-                                    cursor: pointer;
-                                }
-                            }
-                        }
-
-                        .imgs-overflow {
-                            .img-overflow {
-                                height: 190px;
-                                width: 121px;
-                            }
-
-                            .container-of-arrow-img-overflow {
-                                display: flex;
-                                justify-content: space-evenly;
-                                flex-direction: row;
-                                margin-left: 57px;
-
-                                .show-arrow {
-                                    background-color: black;
-                                    text-align: center;
-                                    font-size: $font-size-xxs;
-                                    color: white;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .foot {
-                    .tax {
-                        display:none;
-                    }
-
-                    .quantity {
-                        display: none;
-                    }
-
-                    .button {
-                        display: none;
-                    }
-
-                    .overflow-tax {
-                        flex-wrap: nowrap;
-                        justify-content: space-between;
-                        margin-bottom: 45px;
-                        font-family: $font-family-roboto;
-                        font-weight: 500;
+                    .currency {
+                        font-weight: 700;
                         font-size: $font-size-small;
-                        margin-left:10px;
-                        line-height: 18px;
-                        margin-top: 30px;
+                        margin-right: 20px;
+                        height: 26px;
+                        line-height: 25px;
+                        margin-top:30px;
                         color: $black;
-                        height: 19px;
-
-                        .currency {
-                            font-weight: 700;
-                            font-size: $font-size-small;
-                            margin-right: 20px;
-                            height: 26px;
-                            line-height: 25px;
-                            margin-top:30px;
-                            color: $black;
-                            margin-left: 200px;
-                        }
+                        margin-left: 200px;
                     }
                 }
+            }
 
-                .overflow-button-wiev {
+            .overflow-button-wiev {
+                font-family: $font-family-raleway;
+                width: 140px;
+                height: 43px;
+                font-weight: 600;
+                border: 1px solid $black;
+                background: $white;
+                margin-left: 16px;
+                margin-bottom: 32px;
+                cursor: pointer;
+
+
+                .overflow-value {
                     font-family: $font-family-raleway;
-                    width: 140px;
-                    height: 43px;
-                    font-weight: 600;
-                    border: 1px solid $black;
-                    background: $white;
-                    margin-left: 16px;
-                    margin-bottom: 32px;
-
-                    .overflow-value {
-                        font-family: $font-family-raleway;
-                        text-align: center;
-                    }
+                    text-align: center;
                 }
+            }
 
-                .overflow-button-checkout {
-                    background-color: $green;
-                    margin-left: 12px;
-                    width: 140px;
-                    padding-top: 13px;
-                    padding-bottom: 13px;
-                    border: none;
-                    height: 43px;
+            .overflow-button-checkout {
+                background-color: $green;
+                margin-left: 12px;
+                width: 140px;
+                padding-top: 13px;
+                padding-bottom: 13px;
+                border: none;
+                height: 43px;
+                cursor: pointer;
+                font-family: $font-family-raleway;
+                text-align: center;
+                color: white;
+                font-weight: 600;
+                font-size: $font-size-xs;
 
-                    .overflow-value-checkout {
-                        font-family: $font-family-raleway;
-                        text-align: center;
-                        color: white;
-                        font-weight: 600;
-                        font-size: $font-size-xs;
-                    }
-                }
             }
         }
     }
