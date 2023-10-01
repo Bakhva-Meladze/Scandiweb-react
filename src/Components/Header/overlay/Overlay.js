@@ -15,38 +15,10 @@ class Overlay extends React.Component {
         }
     }
 
-    OpenCart=(event,element)=>{
-        if(element === "basket"){
-            alert("overlay");
-            this.setState({
-                showCartOverlay: true
-
-            })
-        }
-
-        if(element === "overlay"){
-            alert("overlay");
-            this.setState({
-                showCartOverlay: false
-
-            })
-        }
-
-        if( event.target.className === "overflow-button-checkout" && element ==="checkout"){
-            alert("checkout");
-            this.setState({
-                showCartOverlay: false
-
-            })
-        }
-        if(event.target.className ==="cart-overlay" && element === "cart-overlay"){
-            alert("cart-overlay");
-            this.setState({
-                showCartOverlay: true
-
-            })
-
-        }
+    OpenCart=()=>{
+        this.setState({
+            showCartOverlay: !this.state.showCartOverlay
+        })
     }
 
     render() {
@@ -55,7 +27,7 @@ class Overlay extends React.Component {
                 {({QuantityOfProducts,currencyKey,ChangeProductInCart,cachedData,productsPrices}) => (
                     <div>
                         <div className="basket-container"
-                             onClick={(event)=>this.OpenCart(event, "basket")}>
+                             onClick={()=>this.OpenCart()}>
                             <img className="basket" src={icon} alt={"basket"}/>
                             <div className="circle">
                                 <span className="circle-value">{QuantityOfProducts()}</span>
@@ -64,9 +36,8 @@ class Overlay extends React.Component {
                         {this.state.showCartOverlay && (
                             <div>
                                 <div className="overlay"
-                                     onClick={(event)=>this.OpenCart(event,"overlay")}></div>
-                                <div className="cart-overlay"
-                                     onClick={(event) => this.OpenCart(event,"cart-overlay")}>
+                                     onClick={()=>this.OpenCart()}></div>
+                                <div className="cart-overlay">
                                     <div className="title">
                                         <span className="brand">{"My Bag  ,"}</span>
                                         <span className="items">{QuantityOfProducts()} items</span>
