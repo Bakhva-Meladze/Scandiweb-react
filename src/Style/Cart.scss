@@ -129,7 +129,9 @@
                     border: 1px solid black;
                     padding: 7.5px 7.5px 7.5px 7.5px;
                     margin-bottom: 10px;
-                    margin-top: 10px
+                    margin-top: 10px;
+                    cursor: pointer;
+
                 }
             }
 
@@ -239,6 +241,8 @@
             font-weight: 600;
             line-height: 16px;
             font-family: $font-family-raleway;
+            cursor: pointer;
+
         }
     }
 }
