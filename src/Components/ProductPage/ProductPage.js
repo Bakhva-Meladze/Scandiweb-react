@@ -13,22 +13,24 @@ class ProductPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: [],
+            product: [],
             choseItemId: "",
             id: window.location.pathname.split("/")[2],
             description: '',
-            items: [],
+            attributes: [],
             error: "",
             size: "",
             currencySymbol: [],
             currencyAmount: [],
             img: [],
-            filter: true
+            filter: true,
+            key: null,
+            choseSelectId:[]
         }
     }
 
     async componentDidMount() {
-        /*const classProduct = await new ProductQueryClass();*/
+
         const responseOptions = {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
@@ -38,13 +40,14 @@ class ProductPage extends React.Component {
         }
 
         fetch(url, responseOptions).then(response => response.json()).then(responseData => {
+            console.log(responseData);
             this.setState({
-                products: responseData.data.product,
+                product: responseData.data.product,
                 img: responseData.data.product.gallery,
-                items: !responseData.data.product.attributes[0] ? [] : responseData.data.product.attributes[0].items,
+                attributes:  responseData.data.product.attributes,
                 rendered: true,
                 description: responseData.data.product.description,
-                size: !responseData.data.product.attributes[0] ? [] : responseData.data.product.attributes[0].id + ":",
+                size: responseData.data.product.attributes[0].id,
                 currencySymbol: responseData.data.product.prices,
                 filter:false
             });
@@ -53,12 +56,17 @@ class ProductPage extends React.Component {
         });
     }
 
-    addSelectItem = (count) => {
+    addSelectItem = (count,key) => {
+        this.state.attributes.length >1? this.setState(PrevState=>({
+                choseSelectId: [...PrevState.choseSelectId ,{ id:key, name: count }]
+            }))
+            :
         this.setState({
-            choseItemId: count
+            choseSelectId:{ id:key, name: count },
+            key:key
         });
-    }
 
+    }
     render() {
         if (this.state.error) {
             return (
@@ -67,6 +75,7 @@ class ProductPage extends React.Component {
                 </div>
             )
         }
+        console.log(this.state.product.inStock);
         return (
             <CartContext.Consumer>
                 {({AddProductInCart, currencyKey}) => (
@@ -76,33 +85,37 @@ class ProductPage extends React.Component {
                         <Slider className="container-pic" img={this.state.img}/>
                         <div className="product-details">
                             <div>
-                                <p className="brand">{this.state.products?.brand}</p>
-                                <p className="name">{this.state.products?.name}</p>
-                                <p className="size">{this.state.size}</p>
-                                <Items items={this.state.items}
+                                <p className="brand">{this.state.product?.brand}</p>
+                                <p className="name">{this.state.product?.name}</p>
+                                <Items attributes={this.state.attributes}
+                                       parameter={this.state.size}
                                        choseItemId={this.state.choseItemId}
+                                       keyOfSelectedItem={this.state.choseSelectId}
                                        addSelectItem={this.addSelectItem}/>
+
                                 <p className="price"> Price:</p>
                                 <div className='currency'>
                                     {this.state.currencySymbol[currencyKey]?.currency.symbol}
                                     {this.state.currencySymbol[currencyKey]?.amount}
                                 </div>
-                                <button
-                                    className="button"
-                                    onClick={() =>
-                                        AddProductInCart(
-                                        this.state.products.id,
-                                        this.state.choseItemId,
-                                        this.state.products.gallery,
-                                        this.state.products.prices,
-                                        this.state.products.attributes[0]?.items,
-                                        this.state.products.brand,
-                                        this.state.products.name,
-                                        )
-                                }>
-                                    Add Cart
+                                <button className={this.state.product.inStock?"buttonAdd":"outOfButton"}
+                                        disabled={!this.state.product.inStock}
+                                        onClick={() =>
+                                            AddProductInCart(
+                                                this.state.product.id,
+                                                this.state.choseSelectId,
+                                                this.state.product.gallery,
+                                                this.state.product.prices,
+                                                this.state.product.attributes[0]?.items,
+                                                this.state.product.brand,
+                                                this.state.product.name,
+                                            )
+                                        }>
+                                    {this.state.product.inStock?"Add Cart":"OUT OF STOCK"}
                                 </button>
-                                {parse(this.state.products.description ? this.state.products.description : "")}
+                                    {/*: <button className="outOfButton" disabled={this.state.products.inStock}>OUT OF STOCK</button>}*/}
+
+                                {parse(this.state.product.description ? this.state.product.description : "")}
                             </div>
                         </div>
                     </div>
