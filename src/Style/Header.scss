@@ -179,6 +179,12 @@
                     }
 
                     .attribute-overlay {
+                        display: flex;
+                        flex-wrap: nowrap;
+                        justify-content: space-between;
+                        flex-direction: column;
+
+
                         .size-overlay {
                             display: flex;
                             margin-bottom: 8px;
@@ -187,27 +193,49 @@
                         .items-overlay {
                             font-family: $font-family-raleway;
                             font-weight: 300;
-                            font-size: $font-size-small;
+                            font-size: 16px;
                             line-height: 25px;
-                            color: $black;
+                            color: #1D1F22;
                             display: flex;
-                            justify-content: flex-start;
                             flex-wrap: nowrap;
+                            flex-direction: column;
 
-                            .item-overlay {
-                                font-family: serif;
-                                width: 24px;
-                                height: 24px;
-                                font-weight: 25;
-                                border: 1px solid $black;
-                                text-align: center;
-                                margin-right: 8px;
+
+                            .attribute-section {
+                                display: flex;
+                                flex-wrap: nowrap;
+                                flex-direction: row;
+
+
+                                .item-overlay {
+                                    border: 1px solid #1D1F22;
+                                    text-align: center;
+                                    width: auto;
+                                    font-size: 10px;
+                                    height: auto;
+                                    cursor: pointer;
+                                    margin-right: 5px;
+                                    padding: 5px 5px 5px 5px;
+
+                                    .value-overlay {
+                                        font-size:14px;
+                                        font-weight: 400;
+                                    }
+                                }
+
+                                .color {
+                                    width: 10px;
+                                }
+                                .select-color {
+                                    border-color: grey;
+                                }
+                                .filter{
+                                    background-color: black;
+                                    color: white;
+
+                                }
                             }
 
-                            .color {
-                                background-color: black;
-                                color: white;
-                            }
                         }
                     }
                 }
