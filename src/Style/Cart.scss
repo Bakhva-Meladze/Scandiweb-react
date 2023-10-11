@@ -85,21 +85,35 @@
                     gap: 8px;
                     width: 276px;
                     height: 45px;
-                    flex-direction: row;
+                    flex-direction: column;
                     flex-wrap: nowrap;
-                    justify-content: flex-start;
+                    margin-bottom: 40px;
 
                     .item {
                         border: 1px solid $black;
                         text-align: center;
-                        width: 63px;
-                        padding-top: 12px;
+                        align-items: center;
+                        width: 65px;
+                        gap: 0.5em;
+                        padding:15px 0px 15px 0px;
+                        margin-right: 5px;
                     }
-
                     .color {
+                        width: 65px;
+                    }
+                    .filter{
                         background-color: black;
                         color: white;
+
                     }
+
+
+                }
+                .attribute-section {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content: flex-start;
                 }
             }
 
