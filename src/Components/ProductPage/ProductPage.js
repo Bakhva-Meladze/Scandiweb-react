@@ -14,7 +14,7 @@ class ProductPage extends React.Component {
         super(props);
         this.state = {
             product: [],
-            choseItemId: "",
+            choseItemId: '',
             id: window.location.pathname.split("/")[2],
             description: '',
             attributes: [],
@@ -27,6 +27,7 @@ class ProductPage extends React.Component {
             key: null,
             choseSelectId:[]
         }
+
     }
 
     async componentDidMount() {
@@ -40,14 +41,13 @@ class ProductPage extends React.Component {
         }
 
         fetch(url, responseOptions).then(response => response.json()).then(responseData => {
-            console.log(responseData);
             this.setState({
                 product: responseData.data.product,
                 img: responseData.data.product.gallery,
                 attributes:  responseData.data.product.attributes,
                 rendered: true,
                 description: responseData.data.product.description,
-                size: responseData.data.product.attributes[0].id,
+                size: responseData.id,
                 currencySymbol: responseData.data.product.prices,
                 filter:false
             });
@@ -56,15 +56,14 @@ class ProductPage extends React.Component {
         });
     }
 
-    addSelectItem = (count,key) => {
-        this.state.attributes.length >1? this.setState(PrevState=>({
-                choseSelectId: [...PrevState.choseSelectId ,{ id:key, name: count }]
-            }))
-            :
-        this.setState({
-            choseSelectId:{ id:key, name: count },
-            key:key
-        });
+    addSelectItem=(selectedAttributes, count)=>{
+        console.log(selectedAttributes);
+        console.log('count: ' + count);
+
+            this.setState({
+                selectedAttributes
+
+            })
 
     }
     render() {
@@ -75,7 +74,6 @@ class ProductPage extends React.Component {
                 </div>
             )
         }
-        console.log(this.state.product.inStock);
         return (
             <CartContext.Consumer>
                 {({AddProductInCart, currencyKey}) => (
@@ -103,10 +101,10 @@ class ProductPage extends React.Component {
                                         onClick={() =>
                                             AddProductInCart(
                                                 this.state.product.id,
-                                                this.state.choseSelectId,
+                                                this.state.selectedAttributes,
                                                 this.state.product.gallery,
                                                 this.state.product.prices,
-                                                this.state.product.attributes[0]?.items,
+                                                this.state.product.attributes,
                                                 this.state.product.brand,
                                                 this.state.product.name,
                                             )
