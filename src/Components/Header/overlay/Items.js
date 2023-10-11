@@ -15,17 +15,33 @@ class Items extends React.Component {
                         className="size-overlay">
                         {this.props.productAttributes[0]?.id ? this.props.productAttributes.items[0] + ":" : ''}
                     </span>*/}
-                <div className="items-overlay">
-                    {this.props.productAttributes.map((item, key) => (
-                        <div className={this.props.chooseItemID === item.id ? "item-overlay color" : "item-overlay"}
-                             key={item.id}>
-                                   <span
-                                       className="value-overlay" >
-                                        {item.value}
-                                   </span>
+
+                    {this.props.productAttributes?.map((attributes, key) => (
+                        <div  key={key} className="items-overlay">
+                            <span
+                                className="size-overlay">
+                                    {attributes.id}
+                            </span>
+                            <div  className="attribute-section" key={key}>
+                                {
+                                    attributes.items?.map((item,index) =>(
+                                        attributes.id === "Color"?
+                                            <div style={{background:`${item.value}`}}
+                                                 className="item-overlay color select-color" key={item.id}>
+                                                <p className="value-overlay"></p>
+                                            </div>
+                                            :
+                                            <div key={index}
+                                                 className={this.props.chooseItemID[attributes.id] === index?
+                                                     "item-overlay filter":"item-overlay"}>
+                                                <span className="value-overlay">{item.value}</span>
+                                            </div>
+                                    ))
+                                }
+                            </div>
                         </div>
                     ))}
-                </div>
+
             </div>
         </div>)
     }
@@ -33,3 +49,11 @@ class Items extends React.Component {
 
 
 export default Items
+
+/* /*<div className={this.props.chooseItemID === item.id ? "item-overlay color" : "item-overlay"}
+                            key={item.id}>
+                                  <span
+                                      className="value-overlay" >
+                                       {item.value}
+                                  </span>
+                       </div>*/
