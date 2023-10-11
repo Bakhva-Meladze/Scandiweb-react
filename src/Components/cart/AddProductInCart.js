@@ -32,9 +32,11 @@ class AddProductInCart extends Component {
   }
 
      AddProductInCart = (id, choseItemID, gallery,prices,items,brand,name,length = 1) => { // (product, chooseItemId = null)
+      console.log(choseItemID);
+      alert("hi");
          const Object = {
              id: id,
-             choseItemID: choseItemID,
+             choseItemID,
              length: length,
              gallery: gallery,
              prices: prices,
