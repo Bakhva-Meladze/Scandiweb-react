@@ -27,8 +27,11 @@ class Items extends React.Component {
                                     attributes.items?.map((item,index) =>(
                                         attributes.id === "Color"?
                                             <div style={{background:`${item.value}`}}
-                                                 className="item-overlay color select-color" key={item.id}>
-                                                <p className="value-overlay"></p>
+                                                 className = {`${this.props.chooseItemID[1] === item.id?
+                                                     "select-color item-overlay color" :"item-overlay color"}`}
+                                                 key={item.id}>
+                                                <p className="value-overlay">
+                                                </p>
                                             </div>
                                             :
                                             <div key={index}
