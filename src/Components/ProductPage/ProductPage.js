@@ -98,21 +98,9 @@ class ProductPage extends React.Component {
                                 </div>
                                 <button className={this.state.product.inStock?"buttonAdd":"outOfButton"}
                                         disabled={!this.state.product.inStock}
-                                        onClick={() =>
-                                            AddProductInCart(
-                                                this.state.product.id,
-                                                this.state.selectedAttributes,
-                                                this.state.product.gallery,
-                                                this.state.product.prices,
-                                                this.state.product.attributes,
-                                                this.state.product.brand,
-                                                this.state.product.name,
-                                            )
-                                        }>
+                                        onClick={() =>AddProductInCart(this.state.product,this.state.selectedAttributes)}>
                                     {this.state.product.inStock?"Add Cart":"OUT OF STOCK"}
                                 </button>
-                                    {/*: <button className="outOfButton" disabled={this.state.products.inStock}>OUT OF STOCK</button>}*/}
-
                                 {parse(this.state.product.description ? this.state.product.description : "")}
                             </div>
                         </div>
