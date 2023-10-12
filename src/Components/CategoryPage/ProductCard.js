@@ -6,10 +6,13 @@ class ProductCard extends React.Component {
     constructor(props) {
         super(props);
         this.state ={
-            inStock: this.props.productCategory.inStock
+            inStock: this.props.productCategory.inStock,
+            choseItemID:{[this.props.productCategory.attributes[0]?.id]:0}
+
         }
 
         this.ProductPage = this.ProductPage.bind(this);
+
     }
 
     ProductPage() {
@@ -42,13 +45,13 @@ class ProductCard extends React.Component {
                             <img className="img-value"
                                  onClick={() => !this.props.productCategory.inStock ? ""
                                      : this.props.AddProductInCart(
-                                         this.props.productCategory.id,
-                                         this.props.productCategory.attributes[0]?.items[0]?.id,
-                                         this.props.productCategory.gallery,
+                                         this.props.productCategory,
+                                         this.state.chooseItemID
+                                        /* this.props.productCategory.gallery,
                                          this.props.productCategory.prices,
                                          this.props.productCategory.attributes[0]?.items,
                                          this.props.productCategory.brand,
-                                         this.props.productCategory.name,
+                                         this.props.productCategory.name,*/
                                      )}
                                  src={cartIcon} alt="Cart"/>
                         </div>:""
