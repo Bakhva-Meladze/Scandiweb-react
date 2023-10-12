@@ -31,27 +31,27 @@ class AddProductInCart extends Component {
 
   }
 
-     AddProductInCart = (id, choseItemID, gallery,prices,items,brand,name,length = 1) => { // (product, chooseItemId = null)
+     AddProductInCart = (product, choseItemID,length = 1) => { // (product, chooseItemId = null)
       console.log(choseItemID);
       alert("hi");
          const Object = {
-             id: id,
+             id: product.id,
              choseItemID,
              length: length,
-             gallery: gallery,
-             prices: prices,
-             items: items,
-             brand: brand,
-             name: name
+             gallery: product.gallery,
+             prices: product.prices,
+             items: product.attributes,
+             brand: product.brand,
+             name: product.name
          }
          this.setState(prevState => ({
-             productsPrices: [...prevState.productsPrices,prices[this.state.currencyKey]],
+             productsPrices: [...prevState.productsPrices,product.prices[this.state.currencyKey]],
          }));
          if (JSON.parse(localStorage.getItem("cartProducts"))) {
              let filter = 0;
              let add = JSON.parse(localStorage.getItem("cartProducts"));
              add.forEach((value, key) => {
-                 if (id === add[key].id && choseItemID === add[key].choseItemID) {
+                 if (product.id === add[key].id && choseItemID === add[key].choseItemID) {
                      add[key].length++;
                      console.log(add);
                      filter++;
@@ -61,12 +61,12 @@ class AddProductInCart extends Component {
                  }
 
                  if (filter === 0 && add.length === key + 1) {
-                     if (id !== add[key].id || choseItemID !== add[key].choseItemID) {
+                     if (product.id !== add[key].id || choseItemID !== add[key].choseItemID) {
                          add.push(Object);
                      }
                  }
 
-                 if (filter > key && id !== add[key].id) {
+                 if (filter > key && product.id !== add[key].id) {
                      add.push(Object);
                  }
              })
