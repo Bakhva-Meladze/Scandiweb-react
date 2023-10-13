@@ -13,15 +13,28 @@
             display: flex;
             width: 100px;
             height: 80px;
-            margin-left:30px;
+            margin-left:5px;
         }
+    }
+    .main-picture{
+        height: 100%;
+        width: 600px;
+        padding-right:10px;
+        max-width: 600px;
+        margin-left:50px;
     }
 
     .product-details {
-        width: 100%;
+        display: flex;
+        flex-flow: column wrap;
+        flex: 1 1 0%;
+        max-width: 400px;
+        /*width: 100%;
         justify-content: space-around;
         display: flex;
         text-align: left;
+        padding-left:100px;
+        padding-right: 100px;*/
 
         .main-picture {
             height: 100%;
@@ -61,18 +74,31 @@
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
-            justify-content: space-between;
+            justify-content: flex-start;
 
             .item {
                 border: 1px solid $black;
                 text-align: center;
                 width: 63px;
                 height: 45px;
+                cursor: pointer;
+                margin-right:5px;
+
+            }
+            .item:hover {
+                background: $black;
+                color: $grey-2;
             }
 
             .color {
                 background-color: black;
                 color: $grey-2;
+                border: 3px solid grey;
+
+            }
+            .select-color {
+                border: 3px solid grey;
+
             }
         }
 
@@ -93,7 +119,7 @@
             margin-bottom: 20px;
         }
 
-        .button {
+        .buttonAdd {
             font-family: $font-family-raleway;
             font-weight: 600;
             line-height: 19px;
@@ -103,6 +129,24 @@
             color: white;
             padding: 15px 32px;
             font-size: $font-size-small;
+            cursor: pointer;
+
+        }
+        .outOfButton {
+            font-family: $font-family-raleway;
+            font-weight: 600;
+            line-height: 19px;
+            width: 100%;
+            background-color: darkgray;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            font-size: $font-size-small;
+            cursor: not-allowed;
+
+        }
+        .buttonAdd:hover {
+            background: $black;
         }
     }
 }
