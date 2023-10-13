@@ -48,9 +48,11 @@ class Items extends React.Component {
                                 attributes.id === "Color"?
                                     <div style={{background:`${item.id}`}}
 
-                                         className={`${item.id === this.state[key]?"select-color item":"item"}`}
+                                         className={`${index === this.state[attributes.id]?" color select-color item":"item"}`}
                                          key={item.id}
-                                         onClick={() => this.addSelectItem(item.id,key)}>
+                                         onClick={() => this.addSelectItem(index,attributes.id)}>
+                                        <p className="value"></p>
+
                                     </div>
                                     :
                                     <div className={`${index === this.state[attributes.id]?"color item":"item"}`}
