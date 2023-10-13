@@ -6,13 +6,18 @@ class ProductCard extends React.Component {
     constructor(props) {
         super(props);
         this.state ={
-            inStock: this.props.productCategory.inStock,
-            choseItemID:{[this.props.productCategory.attributes[0]?.id]:0}
 
         }
 
         this.ProductPage = this.ProductPage.bind(this);
 
+    }
+    componentDidMount() {
+        this.props.attributes.map((attributes,key)=>(
+            this.setState({
+                [attributes.id]:0
+            })
+        ))
     }
 
     ProductPage() {
@@ -21,10 +26,13 @@ class ProductCard extends React.Component {
     }
 
     render() {
+/*
+        console.log(this.props.attributes[0]?.id)
+*/
         return (
             <div className="product-card">
-                <span style={{display: this.state.inStock === true ? "none" : "block"}}
-                      className={`${this.state.inStock === true ? "" : "value-stock"}`}>
+                <span style={{display: this.props.productCategory.inStock === true ? "none" : "block"}}
+                      className={`${this.props.productCategory.inStock === true ? "" : "value-stock"}`}>
                     {"OUT OF THE STOCK"}
                 </span>
                 <Link to={`/product/${this.props.productCategory.id}`} >
@@ -40,13 +48,13 @@ class ProductCard extends React.Component {
                             {this.props.productCategory.prices[this.props.currencyKey]?.amount}
                         </div>
                     </div>
-                    {this.state.inStock?
+                    {this.props.productCategory.inStock?
                         <div className="basket-img">
                             <img className="img-value"
                                  onClick={() => !this.props.productCategory.inStock ? ""
                                      : this.props.AddProductInCart(
                                          this.props.productCategory,
-                                         this.state.chooseItemID
+                                         this.state
                                         /* this.props.productCategory.gallery,
                                          this.props.productCategory.prices,
                                          this.props.productCategory.attributes[0]?.items,
@@ -56,7 +64,6 @@ class ProductCard extends React.Component {
                                  src={cartIcon} alt="Cart"/>
                         </div>:""
                     }
-
                 </div>
             </div>
         )
