@@ -31,6 +31,7 @@ class CategoryPage extends React.Component {
         fetch(url, responseOption).then(response => response.json()).then(responseData => {
             this.setState({
                 productsCategory: responseData.data.category.products,
+                attributes: responseData.data.category.products.attributes,
                 filter: false
             })
         })
@@ -57,6 +58,7 @@ class CategoryPage extends React.Component {
                                          AddProductInCart={AddProductInCart}
                                          pricesAttributes={pricesAttributes}
                                          currencyKey={currencyKey}
+                                         attributes={productCategory.attributes}
                                          prices={this.state.prices}
                             />
                         ))}
