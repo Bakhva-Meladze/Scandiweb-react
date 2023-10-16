@@ -31,9 +31,7 @@ class AddProductInCart extends Component {
 
   }
 
-     AddProductInCart = (product, choseItemID,length = 1) => { // (product, chooseItemId = null)
-      console.log(choseItemID);
-      alert("hi");
+     AddProductInCart = (product, choseItemID =false,length = 1) => { // (product, chooseItemId = null)
          const Object = {
              id: product.id,
              choseItemID,
