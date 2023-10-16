@@ -25,7 +25,8 @@ class ProductPage extends React.Component {
             img: [],
             filter: true,
             key: null,
-            choseSelectId:[]
+            choseSelectId:[],
+            addButton: false
         }
 
     }
@@ -58,11 +59,9 @@ class ProductPage extends React.Component {
 
     addSelectItem=(selectedAttributes, count)=>{
         console.log(selectedAttributes);
-        console.log('count: ' + count);
-
             this.setState({
-                selectedAttributes
-
+                selectedAttributes,
+                addButton: true
             })
 
     }
@@ -90,7 +89,6 @@ class ProductPage extends React.Component {
                                        choseItemId={this.state.choseItemId}
                                        keyOfSelectedItem={this.state.choseSelectId}
                                        addSelectItem={this.addSelectItem}/>
-
                                 <p className="price"> Price:</p>
                                 <div className='currency'>
                                     {this.state.currencySymbol[currencyKey]?.currency.symbol}
@@ -98,7 +96,9 @@ class ProductPage extends React.Component {
                                 </div>
                                 <button className={this.state.product.inStock?"buttonAdd":"outOfButton"}
                                         disabled={!this.state.product.inStock}
-                                        onClick={() =>AddProductInCart(this.state.product,this.state.selectedAttributes)}>
+                                        onClick={() => this.state.addButton?
+                                            AddProductInCart(this.state.product,this.state.selectedAttributes):
+                                            alert("please select one of these options")}>
                                     {this.state.product.inStock?"Add Cart":"OUT OF STOCK"}
                                 </button>
                                 {parse(this.state.product.description ? this.state.product.description : "")}
