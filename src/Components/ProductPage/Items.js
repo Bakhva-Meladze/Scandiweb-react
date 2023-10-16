@@ -8,34 +8,22 @@ class Items extends React.Component {
         this.state = {
 
         };
-
-
-
-
-
+        console.log("itvgl")
     }
 
-    addSelectItem = (selectedAttributes, count) => {
+
+    addSelectItem = (id,items) => {
         this.setState({
-                [count]: selectedAttributes
+                [id]: items
             }, () => {
-                this.props.addSelectItem(this.state);
+            this.props.addSelectItem(this.state);
             }
         );
 
-       /* this.setState({count: this.state.count + 1}, () => {
-            console.log(this.state.count);
-        });
 
-        console.log(this.state);
-        this.props.addSelectItem(this.state);*/
-        /*const divValue = this.ref.current.textContent;
-        console.log(divValue);*/
 
 
     }
-
-
 
     render() {
         return (
@@ -44,10 +32,9 @@ class Items extends React.Component {
                     <div key={key}>
                      <p key={key} className="size">{attributes.id}</p>
                         <div className="items">
-                            {attributes.items.map((item,index) =>(
+                            {attributes.items?.map((item,index) =>(
                                 attributes.id === "Color"?
                                     <div style={{background:`${item.id}`}}
-
                                          className={`${index === this.state[attributes.id]?" color select-color item":"item"}`}
                                          key={item.id}
                                          onClick={() => this.addSelectItem(index,attributes.id)}>
@@ -57,7 +44,7 @@ class Items extends React.Component {
                                     :
                                     <div className={`${index === this.state[attributes.id]?"color item":"item"}`}
                                          key={item.id}
-                                         onClick={() => this.addSelectItem(index,this.props.attributes[key].id)}>
+                                         onClick={() => this.addSelectItem(this.props.attributes[key].id,index)}>
                                         <p className="value">{item.value}</p>
                                     </div>
                             ))}
