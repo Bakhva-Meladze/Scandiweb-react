@@ -3,7 +3,7 @@ import CartProvider from "../Components/cart/CartProvider";
 import CartContext from "../Components/cart/CartContext";
 
 
-class Queres extends React.Component {
+class Queries extends React.Component {
     constructor(props) {
         super(props);
 
@@ -13,6 +13,7 @@ class Queres extends React.Component {
  queryOfProduct(id) {
         return `{
     product(id: "${id}") {
+      id
       name
       inStock
       gallery
@@ -102,7 +103,7 @@ class Queres extends React.Component {
         )
     }
 }
-Queres.contextType = CartContext;
+Queries.contextType = CartContext;
 
 
-export default Queres
+export default Queries
