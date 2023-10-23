@@ -6,17 +6,15 @@ import ProductPage from "./Components/ProductPage/ProductPage";
 import Cart from "./Components/cart/Cart";
 import "./Style/Style.css";
 import CartProvider from "./Components/cart/CartProvider";
-import Queres from "./querys/Queres";
-import AddProductInCart from "./Components/cart/AddProductInCart";
-import ChangeProductInCart from "./Components/cart/ChangeProductInCart";
+import Queries from "./querys/Queries";
+import UpdateCart from "./Components/cart/UpdateCart";
 
 class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <Queres>
-                    <AddProductInCart>
-                        <ChangeProductInCart>
+                <Queries>
+                    <UpdateCart>
                             <CartProvider>
                                 <BrowserRouter>
                                     <Header/>
@@ -36,9 +34,8 @@ class App extends React.Component {
                                     </Switch>
                                 </BrowserRouter>
                             </CartProvider>
-                        </ChangeProductInCart>
-                    </AddProductInCart>
-                </Queres>
+                    </UpdateCart>
+                </Queries>
             </div>
         )
     }
