@@ -9,8 +9,7 @@ class Cart extends React.Component {
     render() {
         return (
             <CartContext.Consumer>
-                {({cachedData, listOfCartProducts, productsPrices, pricesAttributes, ChangeProductInCart, currencyKey,
-                      QuantityOfProducts,openOverlay }) => (
+                {({cachedData, ChangeProductInCart, currencyKey,QuantityOfProducts,openOverlay }) => (
                     <div>
                         <div>
                             <div className= "cart">
@@ -44,9 +43,9 @@ class Cart extends React.Component {
                                 ))}
                                 <Summary
                                     dataFromHeader={openOverlay}
-                                    pricesAttributes={productsPrices[0]?.currency.symbol}
+                                    pricesAttributes={cachedData[0]?.prices[currencyKey]?.currency.symbol}
                                     currencyKey={currencyKey}
-                                    prices={cachedData?.map((value, key) => value.length * productsPrices[key]?.amount)}
+                                    prices={cachedData?.map((value, key) => value.length * value.prices[currencyKey]?.amount)}
                                     QuantityOfProducts={QuantityOfProducts()}
                                 />
                             </div>
