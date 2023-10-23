@@ -97,7 +97,8 @@ class ProductPage extends React.Component {
                                 <button className={this.state.product.inStock?"buttonAdd":"outOfButton"}
                                         disabled={!this.state.product.inStock}
                                         onClick={() => this.state.addButton?
-                                            AddProductInCart(this.state.product,this.state.selectedAttributes):
+                                            AddProductInCart(this.state.product,
+                                                this.state.selectedAttributes):
                                             alert("please select one of these options")}>
                                     {this.state.product.inStock?"Add Cart":"OUT OF STOCK"}
                                 </button>
