@@ -39,7 +39,7 @@ class CartProvider extends Component {
             currencyKey: data,
             productsPrices: array[data]
         });
-         this.context.SelectChangeCurrency(data,array);
+         // this.context.SelectChangeCurrency(data,array);
     }
 
     QuantityOfProducts = () => {
@@ -59,14 +59,15 @@ class CartProvider extends Component {
 
     render() {
         const { queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,AddProductInCart,ChangeProductInCart,
-                cachedData,testData,currencyKey,productsPrices} = this.context;
-        const { pricesAttributes,addCategory,openOverlay} = this.state;
+                cachedData,testData,productsPrices,} = this.context;
+        const { pricesAttributes,addCategory,openOverlay,currencyKey} = this.state;
         const { SelectCurrency, QuantityOfProducts, selectCategoryType,ChangeOverlay} = this;
         return (
             <CartContext.Provider value={{
-                cachedData, productsPrices, pricesAttributes, currencyKey,addCategory,openOverlay,testData,
+                cachedData, productsPrices, pricesAttributes,addCategory,openOverlay,testData,
                 SelectCurrency,QuantityOfProducts,selectCategoryType,ChangeOverlay,
-                AddProductInCart,queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,ChangeProductInCart
+                AddProductInCart,queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,
+                ChangeProductInCart,currencyKey
             }}>
              {this.props.children}
             </CartContext.Provider>
