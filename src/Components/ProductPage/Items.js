@@ -8,7 +8,6 @@ class Items extends React.Component {
         this.state = {
 
         };
-        console.log("itvgl")
     }
 
 
@@ -37,7 +36,7 @@ class Items extends React.Component {
                                     <div style={{background:`${item.id}`}}
                                          className={`${index === this.state[attributes.id]?" color select-color item":"item"}`}
                                          key={item.id}
-                                         onClick={() => this.addSelectItem(index,attributes.id)}>
+                                         onClick={() => this.addSelectItem(attributes.id,index)}>
                                         <p className="value"></p>
 
                                     </div>
