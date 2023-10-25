@@ -11,10 +11,8 @@ class CategoryPage extends React.Component {
 
         this.state = {
             productsCategory: [],
-            currencySymbols: '',
-            states: null,
-            add: "all",
-            filter: true
+            selectedCategory: "",
+            loading: true
         }
 
     }
@@ -24,23 +22,22 @@ class CategoryPage extends React.Component {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                query: this.context.queryOfCategory(this.context.addCategory)
+                query: this.context.queryOfCategory(this.context.selectedCategory)
 
             })
         }
         fetch(url, responseOption).then(response => response.json()).then(responseData => {
             this.setState({
                 productsCategory: responseData.data.category.products,
-                attributes: responseData.data.category.products.attributes,
-                filter: false
+                loading: false
             })
         })
 
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevState.add !== this.context.addCategory){
+        if(prevState.selectedCategory !== this.context.selectedCategory){
             this.setState({
-                add: this.context.addCategory
+                selectedCategory: this.context.selectedCategory
             })
             this.componentDidMount();
         }
@@ -48,21 +45,21 @@ class CategoryPage extends React.Component {
     render() {
         return (
             <CartContext.Consumer>
-                {({AddProductInCart, pricesAttributes,currencyKey}) => (
-                    <div className="category-page">
-                        {this.state.filter?<Loading />:null}
+                {({AddProductInCart,currencyKey}) => (
+                    this.state.loading?
+                        <Loading/>
+                        :
+                        <div className="category-page">
+                            {this.state.productsCategory.map((productCategory, key) => (
+                                <ProductCard
+                                    key={productCategory.id}
+                                    productCategory={productCategory}
+                                    AddProductInCart={AddProductInCart}
+                                    currencyKey={currencyKey}
 
-                        {this.state.productsCategory.map((productCategory, key) => (
-                            <ProductCard key={productCategory.id}
-                                         productCategory={productCategory}
-                                         AddProductInCart={AddProductInCart}
-                                         pricesAttributes={pricesAttributes}
-                                         currencyKey={currencyKey}
-                                         attributes={productCategory.attributes}
-                                         prices={this.state.prices}
-                            />
-                        ))}
-                    </div>
+                                />
+                            ))}
+                        </div>
                 )}
             </CartContext.Consumer>
         )
