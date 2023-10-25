@@ -10,13 +10,13 @@ class CartProvider extends Component {
             data: null,
             pricesAttributes: [],
             currencyKey: localStorage.getItem("currencyKey") ? localStorage.getItem("currencyKey") : 0,
-            addCategory: window.location.pathname.slice(10, window.location.href.length),
+            selectedCategory: window.location.pathname.slice(10, window.location.href.length),
             openOverlay: false
 
         }
     }
 
-    ChangeOverlay =(e) =>{
+    ChangeOverlay =() =>{
         this.setState({
             openOverlay: !this.state.openOverlay
         })
@@ -53,18 +53,18 @@ class CartProvider extends Component {
 
     selectCategoryType =(data) =>{
         this.setState({
-            addCategory:data
+            selectedCategory:data
         })
     }
 
     render() {
         const { queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,AddProductInCart,ChangeProductInCart,
                 cachedData,testData,productsPrices,} = this.context;
-        const { pricesAttributes,addCategory,openOverlay,currencyKey} = this.state;
+        const { pricesAttributes,selectedCategory,openOverlay,currencyKey} = this.state;
         const { SelectCurrency, QuantityOfProducts, selectCategoryType,ChangeOverlay} = this;
         return (
             <CartContext.Provider value={{
-                cachedData, productsPrices, pricesAttributes,addCategory,openOverlay,testData,
+                cachedData, productsPrices, pricesAttributes,selectedCategory,openOverlay,testData,
                 SelectCurrency,QuantityOfProducts,selectCategoryType,ChangeOverlay,
                 AddProductInCart,queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl,
                 ChangeProductInCart,currencyKey
