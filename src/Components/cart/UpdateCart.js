@@ -17,7 +17,7 @@ class AddProductInCart extends Component {
           productsPrices: array
       })
   }
-  componentDidMount() {
+  /*componentDidMount() {
       let arr =[];
       this.state.cachedData?.map((value, key) => {
            arr.push(value.prices[this.state.currencyKey]);
@@ -28,7 +28,7 @@ class AddProductInCart extends Component {
           productsPrices: arr
       });
 
-  }
+  }*/
 
      AddProductInCart = (product, choseItemID =false,length = 1) => { // (product, chooseItemId = null)
          const Object = {
