@@ -3,6 +3,9 @@ import React from 'react';
 class Summary extends React.Component {
     constructor(props) {
         super(props);
+        this.state ={
+            priceSymbol: this.props.priceSymbol !== undefined? this.props.priceSymbol: "$",
+        }
         this.sumPrices();
         this.parcentOfSumPraces();
         this.deleteLocalStorage = this.deleteLocalStorage.bind(this);
@@ -32,7 +35,7 @@ class Summary extends React.Component {
                     <span className="all-items">Tax 21%:</span>
                     <span className="currency">
                         {this.parcentOfSumPraces()}
-                        {" "+this.props.pricesAttributes}
+                        {" "+this.state.priceSymbol}
                     </span>
                 </div>
                 <div className="quantity">
@@ -43,7 +46,7 @@ class Summary extends React.Component {
                     {"Total:"}
                     <span className="currency">
                         {this.sumPrices()}
-                        {" "+this.props.pricesAttributes}
+                        {" "+this.state.priceSymbol}
                     </span>
                 </div>
                 <button className="button" onClick={() => this.deleteLocalStorage()}><span>ORDER</span></button>
