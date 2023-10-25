@@ -11,14 +11,11 @@ class Overlay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showCartOverlay: false,
         }
     }
 
     OpenCart=()=>{
-        this.setState({
-            showCartOverlay: !this.state.showCartOverlay
-        })
+        this.props.openCart();
     }
 
     render() {
@@ -33,10 +30,9 @@ class Overlay extends React.Component {
                                 <span className="circle-value">{QuantityOfProducts()}</span>
                             </div>
                         </div>
-                        {this.state.showCartOverlay && (
+                        {this.props.showCartOverlay && (
                             <div>
-                                <div className="overlay"
-                                     onClick={()=>this.OpenCart()}></div>
+
                                 <div className="cart-overlay">
                                     <div className="title">
                                         <span className="brand">{"My Bag  ,"}</span>
@@ -68,9 +64,9 @@ class Overlay extends React.Component {
                                         </div>
                                     ))}
                                     <Summary
-                                        symbol={productsPrices}
+                                        priceSymbol={cachedData?.map((value) => value.prices[currencyKey].currency.symbol)}
                                         currencyKey={currencyKey}
-                                        prices={cachedData?.map((value, key) => value.length * productsPrices[key]?.amount)}
+                                        prices={cachedData?.map((value, key) => value.length * value.prices[currencyKey]?.amount)}
                                         QuantityOfProducts={QuantityOfProducts()}
                                     />
                                     <OverlayButtons close={this.OpenCart} />
