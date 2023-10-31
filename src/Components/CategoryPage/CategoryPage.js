@@ -3,7 +3,7 @@ import url from "../../url.js";
 import CartContext from "../cart/CartContext";
 import ProductCard from "./ProductCard";
 import Loading from "../../Loading";
-
+import {withRouter} from "react-router-dom";
 
 class CategoryPage extends React.Component {
     constructor(props) {
@@ -11,42 +11,44 @@ class CategoryPage extends React.Component {
 
         this.state = {
             productsCategory: [],
-            selectedCategory: "",
+            selectedCategory: this.props.match.params.item,
             loading: true
         }
-
     }
-     componentDidMount() {
 
-        const responseOption = {
+    componentDidMount() {
+        this.fetchCategoryProducts();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.match.params.item !== this.props.match.params.item) {
+            this.fetchCategoryProducts();
+        }
+    }
+
+    fetchCategoryProducts() {
+
+        const response = {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                query: this.context.queryOfCategory(this.context.selectedCategory)
-
+                query: this.context.queryOfCategory(this.props.match?.params.item)
             })
         }
-        fetch(url, responseOption).then(response => response.json()).then(responseData => {
+
+        fetch(url, response).then(response => response.json()).then(responseData => {
             this.setState({
                 productsCategory: responseData.data.category.products,
                 loading: false
             })
         })
+    }
 
-    }
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevState.selectedCategory !== this.context.selectedCategory){
-            this.setState({
-                selectedCategory: this.context.selectedCategory
-            })
-            this.componentDidMount();
-        }
-    }
     render() {
         return (
             <CartContext.Consumer>
-                {({AddProductInCart,currencyKey}) => (
-                    this.state.loading?
+                {({AddProductInCart, currencyKey}) => (
+                    this.state.loading ?
                         <Loading/>
                         :
                         <div className="category-page">
@@ -56,7 +58,6 @@ class CategoryPage extends React.Component {
                                     productCategory={productCategory}
                                     AddProductInCart={AddProductInCart}
                                     currencyKey={currencyKey}
-
                                 />
                             ))}
                         </div>
@@ -65,6 +66,7 @@ class CategoryPage extends React.Component {
         )
     }
 }
+
 CategoryPage.contextType = CartContext;
 
-export default CategoryPage
+export default withRouter(CategoryPage)
