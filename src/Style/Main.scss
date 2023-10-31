@@ -1,12 +1,16 @@
 .value {
-  margin-bottom: 14px;
-  margin-top: 13px;
-
+    margin-bottom: 14px;
+    margin-top: 13px;
 }
+
 .session {
-  border: 1px solid #1D1F22;
-  text-align: center;
-  width: 63px;
-  height: 45px;
-  margin-right: 12px;
+    border: 1px solid $black;
+    text-align: center;
+    width: 63px;
+    height: 45px;
+    margin-right: 12px;
+}
+
+.error-message {
+    text-align: center;
 }

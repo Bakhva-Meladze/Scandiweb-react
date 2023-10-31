@@ -1,23 +1,18 @@
 .category-page {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     flex-wrap: wrap;
     gap: 2.5em;
     padding-left: 50px;
     padding-right: 50px;
 
-
-
-
     .product-card {
-
         background-color: $white;
         width: 350px;
         text-align: left;
         height: auto;
         margin: 10px 20px 20px;
         padding-bottom: 5em;
-
 
         .out-stock {
             opacity: 0.5;
@@ -39,10 +34,14 @@
             margin-left: 70px;
         }
 
+        .hide {
+            display: none;
+        }
+
         &.product-card:hover {
             box-shadow: 0 4px 35px $shadow;
 
-            .container-data{
+            .container-data {
                 display: flex;
                 width: auto;
                 height: 50px;
@@ -53,13 +52,12 @@
                 margin-right: 5px;
 
                 .basket-img {
-                    color: white;
+                    color: $white;
                     width: 52px;
                     background: $green;
                     border-radius: 50px;
                     display: block;
                     margin-right: 20px;
-
 
                     .img-value {
                         width: 24px;
@@ -67,13 +65,10 @@
                         padding: 14px;
                     }
                 }
-
             }
-
-
         }
 
-        .container-data{
+        .container-data {
             display: flex;
             width: auto;
             height: 50px;
@@ -84,7 +79,7 @@
             margin-right: 5px;
 
             .basket-img {
-                color: white;
+                color: $white;
                 width: 52px;
                 background: $green;
                 border-radius: 50px;
@@ -92,9 +87,8 @@
                 cursor: pointer;
 
                 .basket-img:hover {
-                    background: black;
+                    background: $black;
                 }
-
 
                 .img-value {
                     width: 24px;
@@ -121,21 +115,16 @@
                 margin-bottom: 16px;
                 text-align: left;
             }
-
         }
 
-
-            .pictures {
-                width: 350px;
-                margin-left: 20px;
-                margin-right: 20px;
-                margin-top: 10px;
-                /* text-align: center; */
-                height: 400px;
-                /* object-fit: contain; */
-                object-position: center center;
-
-            }
+        .pictures {
+            width: 350px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 10px;
+            height: 400px;
+            object-position: center center;
+        }
 
         .brand {
             font-weight: 500;
@@ -143,7 +132,7 @@
             Line-height: 30.8px;
             font-size: $font-size-xl;
         }
-      }
+    }
 }
 
 
