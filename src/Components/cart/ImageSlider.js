@@ -1,40 +1,38 @@
 import React from 'react';
 
 class ImageSlider extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
-            keyOfImages: 0
+            currentImageKey: 0
         }
     }
 
-    GoTheImage(arrow) {
+    SelectImg(data) {
+        data === "left" ?
+            this.setState({
+                currentImageKey: this.state.currentImageKey === 0 ? this.props.images.length - 1 : this.state.currentImageKey - 1
+            })
+            :
+            this.setState({
+                currentImageKey: this.state.currentImageKey === this.props.images.length - 1 ? 0 : this.state.currentImageKey + 1
+            })
 
-        if (this.state.keyOfImages < this.props.images.length && this.state.keyOfImages >= 0) {
-            arrow === "left" ?
-                this.setState({
-                    keyOfImages: this.state.keyOfImages === 0 ? this.props.images.length - 1 : this.state.keyOfImages - 1
-                }) : this.setState({
-                    keyOfImages: this.state.keyOfImages === this.props.images.length - 1 ? 0 : this.state.keyOfImages + 1
-                })
-
-        }
     }
 
     render() {
         return (
             <div className="imgs">
                 <img className="img"
-                     key={this.props.myKey} src={this.props.images[this.state.keyOfImages]}/>
+                     key={this.props.imageKey} src={this.props.images[this.state.currentImageKey]} alt="Product"/>
                 <div
-                    className= "container-of-arrow">
+                    className="container-of-arrow">
                     <button className="show-arrow"
-                            onClick={() => this.GoTheImage("left")}>
+                            onClick={() => this.SelectImg("left")}>
                         {"<"}
                     </button>
                     <button className="show-arrow"
-                            onClick={() => this.GoTheImage("right")}>
+                            onClick={() => this.SelectImg("right")}>
                         {">"}
                     </button>
                 </div>
