@@ -9,15 +9,14 @@ class Cart extends React.Component {
     render() {
         return (
             <CartContext.Consumer>
-                {({cachedData, ChangeProductInCart, currencyKey,QuantityOfProducts,openOverlay }) => (
+                {({cachedData, ChangeProductInCart, currencyKey, QuantityOfProducts}) => (
                     <div>
                         <div>
-                            <div className= "cart">
+                            <div className="cart">
                                 {cachedData?.map((product, index) => (
-                                    <div className={`${openOverlay? "container-overflow-item" : "container-item"}`}
-                                        key={index}>
+                                    <div className="container-item"
+                                         key={index}>
                                         <Items
-                                            dataFromHeader={openOverlay}
                                             chooseItemID={product.choseItemID}
                                             brand={product.brand}
                                             name={product.name}
@@ -26,24 +25,21 @@ class Cart extends React.Component {
                                             currencyKey={currencyKey}
                                         />
                                         <div
-                                            className={`${openOverlay? "content-right-overflow" : "content-right"}`}>
+                                            className="content-right">
                                             <ChangeQuantity
-                                                dataFromHeader={openOverlay}
                                                 ChangeProductInCart={ChangeProductInCart}
                                                 productQuantity={product.length}
                                                 index={index}
                                             />
                                             <ImageSlider
-                                                dataFromHeader={openOverlay}
                                                 images={product.gallery}
-                                                myKey={index}
+                                                imageKey={index}
                                             />
                                         </div>
                                     </div>
                                 ))}
                                 <Summary
-                                    dataFromHeader={openOverlay}
-                                    priceSymbol={cachedData?.map((value) => value.prices[currencyKey].currency.symbol)}
+                                    currecnySymbol={cachedData[0]?.prices[currencyKey].currency.symbol}
                                     currencyKey={currencyKey}
                                     prices={cachedData?.map((value) => value.length * value.prices[currencyKey]?.amount)}
                                     QuantityOfProducts={QuantityOfProducts()}
