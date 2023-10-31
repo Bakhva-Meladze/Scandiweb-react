@@ -92,11 +92,10 @@ class Queries extends React.Component {
     }
 
     render() {
-        const {changeUrl} = this.context;
         const {queryOfProduct,queryOfCategory,currencyPriceQuery} =this;
         return (
             <CartContext.Provider value={{
-                queryOfProduct,queryOfCategory,currencyPriceQuery,changeUrl}}>
+                queryOfProduct,queryOfCategory,currencyPriceQuery}}>
                 {this.props.children}
             </CartContext.Provider>
 
