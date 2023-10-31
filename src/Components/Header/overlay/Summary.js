@@ -3,8 +3,8 @@ import React from 'react';
 class Summary extends React.Component {
     constructor(props) {
         super(props);
-        this.state ={
-            priceSymbol: this.props.priceSymbol !== undefined? this.props.priceSymbol: "$",
+        this.state = {
+            currencySymbol: this.props.currencySymbol,
         }
 
         this.sumPrices();
@@ -18,15 +18,13 @@ class Summary extends React.Component {
             : 0;
     }
 
-
-
     render() {
         return (
-            <div className="foot">
-                <div className="overflow-tax">
-                    {"Total:"}
+            <div className="summary">
+                <div className="overlay-tax">
+                    Total:
                     <span className="currency">
-                        {this.state.priceSymbol}
+                        {this.state.currencySymbol}
                         {this.sumPrices()}
                     </span>
                 </div>

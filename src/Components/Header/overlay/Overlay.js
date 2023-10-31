@@ -6,25 +6,23 @@ import ChangeQuantity from "./ChangeQuantity";
 import ImageSlider from "./ImageSlider";
 import Summary from "./Summary";
 import OverlayButtons from "./OverlayButtons";
-class Overlay extends React.Component {
 
+class Overlay extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-        }
+        this.state = {}
     }
 
-    OpenCart=()=>{
-        this.props.openCart();
+    toggleCart = () => {
+        this.props.toggleCart();
     }
 
     render() {
         return (
             <CartContext.Consumer>
-                {({QuantityOfProducts,currencyKey,ChangeProductInCart,cachedData,productsPrices}) => (
+                {({QuantityOfProducts, currencyKey, ChangeProductInCart, cachedData}) => (
                     <div>
-                        <div className="basket-container"
-                             onClick={()=>this.OpenCart()}>
+                        <div className="basket-container" onClick={() => this.toggleCart()}>
                             <img className="basket" src={icon} alt={"basket"}/>
                             <div className="circle">
                                 <span className="circle-value">{QuantityOfProducts()}</span>
@@ -32,7 +30,6 @@ class Overlay extends React.Component {
                         </div>
                         {this.props.showCartOverlay && (
                             <div>
-
                                 <div className="cart-overlay">
                                     <div className="title">
                                         <span className="brand">{"My Bag  ,"}</span>
@@ -40,7 +37,7 @@ class Overlay extends React.Component {
                                         :
                                         <span>CART</span>
                                     </div>
-                                    {cachedData?.map((product,index)=>(
+                                    {cachedData?.map((product, index) => (
                                         <div key={index} className="container-overflow-item">
                                             <Items
                                                 chooseItemID={product.choseItemID}
@@ -58,18 +55,19 @@ class Overlay extends React.Component {
                                                 />
                                                 <ImageSlider
                                                     images={product.gallery}
-                                                    myKey={index}
+                                                    imageKey={index}
                                                 />
                                             </div>
                                         </div>
                                     ))}
                                     <Summary
-                                        priceSymbol={cachedData?.map((value) => value.prices[currencyKey].currency.symbol)}
+                                        currencySymbol={cachedData !== null?
+                                            cachedData[0]?.prices[currencyKey].currency.symbol: "$"}
                                         currencyKey={currencyKey}
-                                        prices={cachedData?.map((value, key) => value.length * value.prices[currencyKey]?.amount)}
+                                        prices={cachedData?.map((value) => value.length * value.prices[currencyKey]?.amount)}
                                         QuantityOfProducts={QuantityOfProducts()}
                                     />
-                                    <OverlayButtons close={this.OpenCart} />
+                                    <OverlayButtons close={this.toggleCart}/>
                                 </div>
                             </div>
                         )}

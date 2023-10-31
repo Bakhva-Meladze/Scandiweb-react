@@ -1,21 +1,19 @@
 import React from "react";
-import {Link, useHistory} from 'react-router-dom';
-import { withRouter } from "react-router-dom";
-
+import {Link} from 'react-router-dom';
+import {withRouter} from "react-router-dom";
 
 class OverlayButtons extends React.Component {
-
     render() {
         return (
             <div>
-                <Link  to={"/cart"}>
-                    <button className="overflow-button-wiev">
-                    <span className="overflow-value">VIEW BAG</span>
-                </button>
+                <Link to={"/cart"}>
+                    <button className="overlay-button-view">
+                        <span className="overflow-value">VIEW BAG</span>
+                    </button>
                 </Link>
-                <button className="overflow-button-checkout"
+                <button className="overlay-button-checkout"
                         onClick={() => this.props.close()}>
-                    CHECK OUT
+                    CHECKOUT
                 </button>
             </div>
         )
