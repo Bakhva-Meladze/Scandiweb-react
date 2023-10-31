@@ -9,7 +9,7 @@ class Currency extends React.Component {
         }
     }
 
-    openCurrencyList() {
+    toggleCurrencyList() {
         this.setState({
             showCurrencyList: !this.state.showCurrencyList
         });
@@ -18,21 +18,21 @@ class Currency extends React.Component {
     render() {
         return (
             <>
-                <div className="currency" onClick={() => this.openCurrencyList()}>
+                <div className="currency" onClick={() => this.toggleCurrencyList()}>
                     <h3 className='dollar'>{this.props.currency[this.props.currencyKey]?.currency.symbol}</h3>
                     <div
                         className={this.state.showCurrencyList ? "container" : "hide"}>
-                        {this.props.currency.map((value, key) => (
+                        {this.props.currency.map((data, key) => (
                             <div key={key}>
                                 <button onClick={() => this.props.SelectCurrency(key)}
                                         className="sectionCurrency">
-                                    {this.props.currency[key].currency.symbol} {this.props.currency[key].currency.label}
+                                    {data.currency.symbol} {data.currency.label}
                                 </button>
                             </div>
                         ))}
                     </div>
                 </div>
-                <div onClick={() => this.openCurrencyList()}>
+                <div onClick={() => this.toggleCurrencyList()}>
                     <img className={this.state.showCurrencyList ? "arrow" : "arrow flip-arrow"} src={arrowUp}
                          alt={"arrow"}/>
                 </div>
