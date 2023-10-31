@@ -6,12 +6,13 @@ class ChangeQuantity extends React.Component {
     }
 
     render() {
-        return (<div className={`${this.props.dataFromHeader ? "quantity-switcher-overflow" : "quantity-switcher"}`}>
-                <div className={`${this.props.dataFromHeader ? "sum-overflow" : "sum"}`}>
+        return (
+            <div className="quantity-switcher">
+                <div className="sum">
                     <div onClick={() => this.UpdateCart("increase")} className="sum-button">
                         +
                     </div>
-                    <span style={{textAlign: "center"}}>
+                    <span className="product-quantity">
                         {this.props.productQuantity}
                     </span>
                     <div onClick={() => this.UpdateCart("decrease")} className="sum-button">
