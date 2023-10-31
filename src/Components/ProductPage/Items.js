@@ -1,55 +1,45 @@
-import React, {useRef} from "react";
+import React from "react";
 
 class Items extends React.Component {
 
     constructor(props) {
         super(props);
-        /*this.ref = this.props.attributes.map(() => React.createRef());*/
-        this.state = {
-
-        };
+        this.state = {};
     }
 
-
-    addSelectItem = (id,items) => {
+    addSelectItem = (id, items) => {
         this.setState({
                 [id]: items
             }, () => {
-            this.props.addSelectItem(this.state);
+                this.props.addSelectItem(this.state);
             }
         );
-
-
-
-
     }
 
     render() {
         return (
             <div>
-                {this.props.attributes?.map((attributes,key)=> (
+                {this.props.itemAttributes?.map((attributes, key) => (
                     <div key={key}>
-                     <p key={key} className="size">{attributes.id}</p>
+                        <p key={key} className="size">{attributes.id}</p>
                         <div className="items">
-                            {attributes.items?.map((item,index) =>(
-                                attributes.id === "Color"?
-                                    <div style={{background:`${item.id}`}}
-                                         className={`${index === this.state[attributes.id]?" color select-color item":"item"}`}
+                            {attributes.items?.map((item, index) => (
+                                attributes.id === "Color" ?
+                                    <div style={{background: `${item.id}`}}
+                                         className={`${index === this.state[attributes.id] ? "color select-color item" : "item"}`}
                                          key={item.id}
-                                         onClick={() => this.addSelectItem(attributes.id,index)}>
-                                        <p className="value"></p>
-
+                                         onClick={() => this.addSelectItem(attributes.id, index)}>
                                     </div>
                                     :
-                                    <div className={`${index === this.state[attributes.id]?"color item":"item"}`}
+                                    <div className={`${index === this.state[attributes.id] ? "color item" : "item"}`}
                                          key={item.id}
-                                         onClick={() => this.addSelectItem(this.props.attributes[key].id,index)}>
+                                         onClick={() => this.addSelectItem(this.props.itemAttributes[key].id, index)}>
                                         <p className="value">{item.value}</p>
                                     </div>
                             ))}
                         </div>
                     </div>
-                    ))
+                ))
                 }
             </div>
         )

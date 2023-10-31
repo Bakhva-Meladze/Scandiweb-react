@@ -4,14 +4,14 @@ class Slider extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            keyOfImg: 0
+            currentImageKey: 0
         }
         this.SelectImage = this.SelectImage.bind(this);
     }
 
     SelectImage(keyOfImg) {
         this.setState({
-            keyOfImg: keyOfImg,
+            currentImageKey: keyOfImg,
         })
     }
 
@@ -25,7 +25,7 @@ class Slider extends React.Component {
                         </div>
                     ))}
                 </div>
-                <img className="main-picture" src={this.props.img[this.state.keyOfImg]} alt="Product"/>
+                <img className="main-picture" src={this.props.img[this.state.currentImageKey]} alt="Product"/>
             </>
         )
     }
