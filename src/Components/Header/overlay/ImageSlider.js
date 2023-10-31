@@ -1,22 +1,20 @@
 import React from 'react';
 
 class ImageSlider extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
-            keyOfImages: 0
+            currentImageKey: 0
         }
     }
 
-    GoTheImage(arrow) {
-
-        if (this.state.keyOfImages < this.props.images.length && this.state.keyOfImages >= 0) {
+    SelectImg(arrow) {
+        if (this.state.currentImageKey < this.props.images.length && this.state.currentImageKey >= 0) {
             arrow === "left" ?
                 this.setState({
-                    keyOfImages: this.state.keyOfImages === 0 ? this.props.images.length - 1 : this.state.keyOfImages - 1
+                    currentImageKey: this.state.currentImageKey === 0 ? this.props.images.length - 1 : this.state.currentImageKey - 1
                 }) : this.setState({
-                    keyOfImages: this.state.keyOfImages === this.props.images.length - 1 ? 0 : this.state.keyOfImages + 1
+                    currentImageKey: this.state.currentImageKey === this.props.images.length - 1 ? 0 : this.state.currentImageKey + 1
                 })
 
         }
@@ -24,17 +22,17 @@ class ImageSlider extends React.Component {
 
     render() {
         return (
-            <div className="imgs-overflow">
-                <img className="img-overflow"
-                     key={this.props.myKey} src={this.props.images[this.state.keyOfImages]}/>
+            <div className="images-overlay">
+                <img className="img-overlay"
+                     key={this.props.imageKey} src={this.props.images[this.state.currentImageKey]} alt="Product"/>
                 <div
-                    className="container-of-arrow-img-overflow">
+                    className="container-of-arrow-img-overlay">
                     <button className="show-arrow"
-                            onClick={() => this.GoTheImage("left")}>
+                            onClick={() => this.SelectImg("left")}>
                         {"<"}
                     </button>
                     <button className="show-arrow"
-                            onClick={() => this.GoTheImage("right")}>
+                            onClick={() => this.SelectImg("right")}>
                         {">"}
                     </button>
                 </div>
