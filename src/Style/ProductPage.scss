@@ -13,15 +13,16 @@
             display: flex;
             width: 100px;
             height: 80px;
-            margin-left:5px;
+            margin-left: 5px;
         }
     }
-    .main-picture{
+
+    .main-picture {
         height: 100%;
         width: 600px;
-        padding-right:10px;
+        padding-right: 10px;
         max-width: 600px;
-        margin-left:50px;
+        margin-left: 50px;
     }
 
     .product-details {
@@ -29,17 +30,11 @@
         flex-flow: column wrap;
         flex: 1 1 0%;
         max-width: 400px;
-        /*width: 100%;
-        justify-content: space-around;
-        display: flex;
-        text-align: left;
-        padding-left:100px;
-        padding-right: 100px;*/
 
         .main-picture {
             height: 100%;
             width: 500px;
-            padding-right:10px;
+            padding-right: 10px;
             max-width: 600px;
         }
 
@@ -58,12 +53,12 @@
             font-size: $font-size-xl;
             font-weight: 400;
             line-height: 27px;
-            margin-top:16px;
+            margin-top: 16px;
             margin-bottom: 43px;
         }
 
         .size {
-            font-family: "Roboto Condensed";
+            font-family: $font-family-roboto;
             font-size: $font-size-medium;
             font-weight: 700;
             line-height: 18px;
@@ -82,29 +77,29 @@
                 width: 63px;
                 height: 45px;
                 cursor: pointer;
-                margin-right:5px;
+                margin-right: 5px;
 
             }
+
             .item:hover {
                 background: $black;
                 color: $grey-2;
             }
 
             .color {
-                background-color: black;
+                background-color: $black;
                 color: $grey-2;
-                border: 3px solid grey;
-
+                border: 3px solid $grey;
             }
-            .select-color {
-                border: 3px solid grey;
 
+            .select-color {
+                border: 3px solid $grey;
             }
         }
 
         .price {
             margin-top: 36px;
-            font-family: "Roboto Condensed";
+            font-family: $font-family-roboto;
             font-size: $font-size-medium;
             font-weight: 700;
             line-height: 18px;
@@ -126,12 +121,13 @@
             width: 100%;
             background-color: $green-1;
             border: none;
-            color: white;
+            color: $white;
             padding: 15px 32px;
             font-size: $font-size-small;
             cursor: pointer;
 
         }
+
         .outOfButton {
             font-family: $font-family-raleway;
             font-weight: 600;
@@ -139,12 +135,13 @@
             width: 100%;
             background-color: darkgray;
             border: none;
-            color: white;
+            color: $white;
             padding: 15px 32px;
             font-size: $font-size-small;
             cursor: not-allowed;
 
         }
+
         .buttonAdd:hover {
             background: $black;
         }
