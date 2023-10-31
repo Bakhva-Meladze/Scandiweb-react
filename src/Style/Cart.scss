@@ -76,7 +76,7 @@
                 padding-bottom: 30px;
 
                 .size {
-                    size: 10px;
+                    font-size: 18px;
                     font-weight: 700;
                 }
 
@@ -95,20 +95,24 @@
                         align-items: center;
                         width: 65px;
                         gap: 0.5em;
-                        padding:15px 0px 15px 0px;
+                        padding: 15px 0px 15px 0px;
                         margin-right: 5px;
                     }
+
                     .color {
                         width: 65px;
                     }
-                    .filter{
-                        background-color: black;
-                        color: white;
 
+                    .filter {
+                        background-color: $black;
+                        color: $white;
                     }
 
-
+                    .select-color {
+                        border: 3px solid $grey;
+                    }
                 }
+
                 .attribute-section {
                     display: flex;
                     flex-direction: row;
@@ -116,7 +120,6 @@
                     justify-content: flex-start;
                 }
             }
-
         }
 
         .content-right {
@@ -137,6 +140,10 @@
                     left: 1071px
                 }
 
+                .product-quantity {
+                    text-align: center;
+                }
+
                 .sum-button {
                     text-align: center;
                     width: 15px;
@@ -145,7 +152,6 @@
                     margin-bottom: 10px;
                     margin-top: 10px;
                     cursor: pointer;
-
                 }
             }
 
@@ -168,10 +174,10 @@
                     position: absolute;
 
                     .show-arrow {
-                        background-color: black;
+                        background-color: $black;
                         text-align: center;
                         font-size: $font-size-xxs;
-                        color: white;
+                        color: $white;
                     }
 
                     .show-arrow:hover {
@@ -182,7 +188,7 @@
         }
     }
 
-    .foot {
+    .cart-summary {
         display: flex;
         flex-direction: column;
         width: 279px;
@@ -204,7 +210,7 @@
                 font-weight: 600;
                 font-size: $font-size-large;
                 line-height: 27px;
-                margin-left:15px
+                margin-left: 15px
             }
         }
 
@@ -262,8 +268,8 @@
 }
 
 .arrows-div {
-    background-color: black;
-    color: white;
+    background-color: $black;
+    color: $white;
     width: 18px;
     height: 10px;
 }
