@@ -1,19 +1,16 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 class Category extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div className="navigation">
-                {this.props.categories.map((value, key) => (
+                {this.props.categories.map((category, key) => (
                     <label key={key} className="btn">
-                        <NavLink className="btns" onClick={() => this.props.selectCategoryType(this.props.categories[key].name)}
-                                 key={this.props.categories[key].name} to={"/category/" + this.props.categories[key].name}>
-                            {this.props.categories[key].name}
+                        <NavLink className="btns"
+                                 key={category.name}
+                                 to={"/category/"+category.name}>
+                            {category.name}
                         </NavLink>
                     </label>
                 ))}
