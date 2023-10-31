@@ -1,6 +1,5 @@
 import React from "react";
 import CartContext from "./Components/cart/CartContext";
-import { useHistory } from 'react-router-dom';
 
 class FetchData extends React.Component {
 

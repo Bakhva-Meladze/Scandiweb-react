@@ -13,8 +13,8 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <Queries>
-                    <UpdateCart>
+                    <Queries>
+                        <UpdateCart>
                             <CartProvider>
                                 <BrowserRouter>
                                     <Header/>
@@ -34,8 +34,8 @@ class App extends React.Component {
                                     </Switch>
                                 </BrowserRouter>
                             </CartProvider>
-                    </UpdateCart>
-                </Queries>
+                        </UpdateCart>
+                    </Queries>
             </div>
         )
     }
