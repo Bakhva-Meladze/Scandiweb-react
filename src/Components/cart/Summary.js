@@ -3,12 +3,10 @@ import React from 'react';
 class Summary extends React.Component {
     constructor(props) {
         super(props);
-        this.state ={
-            priceSymbol: this.props.priceSymbol !== undefined? this.props.priceSymbol: "$",
+        this.state = {
         }
         this.sumPrices();
-        this.parcentOfSumPraces();
-        this.deleteLocalStorage = this.deleteLocalStorage.bind(this);
+        this.taxQuantity();
     }
 
     sumPrices() {
@@ -19,23 +17,19 @@ class Summary extends React.Component {
             : 0;
     }
 
-    parcentOfSumPraces() {
+    taxQuantity() {
         return this.sumPrices() * 21 / 100;
 
     }
 
-    deleteLocalStorage() {
-        localStorage.removeItem("cartProducts");
-    }
-
     render() {
         return (
-            <div className="foot">
+            <div className="cart-summary">
                 <div className="tax">
                     <span className="all-items">Tax 21%:</span>
                     <span className="currency">
-                        {this.parcentOfSumPraces()}
-                        {" "+this.state.priceSymbol}
+                        {this.taxQuantity()}
+                        {" " + this.props.currecnySymbol}
                     </span>
                 </div>
                 <div className="quantity">
@@ -46,10 +40,11 @@ class Summary extends React.Component {
                     {"Total:"}
                     <span className="currency">
                         {this.sumPrices()}
-                        {" "+this.state.priceSymbol}
+                        {" " + this.props.currecnySymbol}
                     </span>
                 </div>
-                <button className="button" onClick={() => this.deleteLocalStorage()}><span>ORDER</span></button>
+                <button className="button" onClick={() => {
+                }}><span>ORDER</span></button>
             </div>
         )
     }

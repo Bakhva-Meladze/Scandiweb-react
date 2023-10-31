@@ -1,10 +1,6 @@
 import React from 'react';
 
 class Items extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="content">
@@ -25,10 +21,9 @@ class Items extends React.Component {
                                 attributes.items?.map((item, index) => (
                                     attributes.id === "Color" ?
                                         <div style={{background: `${item.id}`}}
-                                            className = {`${this.props.chooseItemID?.[attributes.id] === index?
-                                            "select-color item color" :"item color"}`}
+                                             className={`${this.props.chooseItemID?.[attributes.id] === index ?
+                                                 "select-color item color" : "item color"}`}
                                              key={item.id}>
-                                            <p className="value"></p>
                                         </div>
                                         :
                                         <div key={index}
